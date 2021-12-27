@@ -87,6 +87,7 @@ function App() {
     const reportWindowSize = () => window.innerWidth
 
     const willChangeToMobile = () => {
+      console.log('REPORTING WINDOW SIZE', reportWindowSize());
       reportWindowSize() <= 480 ? setIsMobile(true) : setIsMobile(false)
     }
 
