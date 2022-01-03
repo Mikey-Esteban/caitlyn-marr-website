@@ -3,7 +3,7 @@ import { Instagram } from '@styled-icons/boxicons-logos/Instagram'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
-  margin-top: 2rem;
+  margin-top: 100vh;
   width: 100%;
   height: 100px;
 

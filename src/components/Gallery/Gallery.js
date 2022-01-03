@@ -3,10 +3,12 @@ import styled from 'styled-components'
 import Carousel from '../Carousel/Carousel'
 
 const Wrapper = styled.div`
+  margin-top: 4rem;
   width: 100%;
 `
 
 const GalleryWrapper = styled.div`
+  width: 100%:
   margin: 0 auto;
   display: flex;
   justify-content: center;
@@ -21,21 +23,24 @@ const GalleryWrapper = styled.div`
 
   @media only screen and (max-width: 480px) {
     flex-direction: column;
+    gap: 2rem;
 
+    align-items: end;
     img {
+      margin-left: 10%;
       height: auto;
-      width: 100%;
+      width: 80%;
     }
   }
 `
 const Gallery = ({isMobile}) => {
 
   let caitlynPhotos = [
-    'https://images.squarespace-cdn.com/content/v1/605cb22e7c9f0b38065bb581/1619139811130-HUW5J8O5R1E28I8X6VM2/Caitlyn286.jpg',
     'https://images.squarespace-cdn.com/content/v1/605cb22e7c9f0b38065bb581/42acac37-f8b7-4d95-a735-02aa2146ec2f/Caitlyn144.jpg',
     'https://images.squarespace-cdn.com/content/v1/605cb22e7c9f0b38065bb581/0493fec5-c887-49f3-8cfd-630630a48cee/Caitlyn102.jpg',
     'https://images.squarespace-cdn.com/content/v1/605cb22e7c9f0b38065bb581/1619140582333-GKKFH6KS1TA9LL01TB5Q/Caitlyn542.jpg',
-    'https://images.squarespace-cdn.com/content/v1/605cb22e7c9f0b38065bb581/1619140802653-9SIPZXDZPRNIANBGREU6/Caitlyn319.jpg'
+    'https://images.squarespace-cdn.com/content/v1/605cb22e7c9f0b38065bb581/1619140802653-9SIPZXDZPRNIANBGREU6/Caitlyn319.jpg',
+    'https://images.squarespace-cdn.com/content/v1/605cb22e7c9f0b38065bb581/1619139811130-HUW5J8O5R1E28I8X6VM2/Caitlyn286.jpg'
   ]
 
   return (

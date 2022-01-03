@@ -6,41 +6,44 @@ import { Document, Page, pdfjs } from 'react-pdf'
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 const Wrapper = styled.div`
+  margin-top: 4rem;
+  padding: 4rem 0;
   width: 100%;
   display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1rem;
 
-  gap: 8rem;
+  background: #171717;
 
-  @media only screen and (max-width: 925px) {
+  @media only screen and (max-width: 800px) {
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    gap: 1rem;
-  }
-
-  @media only screen and (max-width: 600px) {
-    align-items: flex-start;
   }
 `
 const DocumentWrapper = styled.div`
+  margin-top: 2rem;
   padding: 0 1rem;
-  width: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 
-  @media only screen and (max-width: 725px) {
+  @media only screen and (max-width: 800px) {
     .page > canvas {
-      width: 600px !important;
+      width: 500px !important;
       height: 100% !important;
     }
   }
 
   @media only screen and (max-width: 600px) {
-    .page > canvas {
-      width: 400px !important;
-      height: 100% !important;
-    }
+    margin-left: 80px;
   }
 `
 const CTAWrapper = styled.div`
   width: 50%;
+  margin-left: 4rem;
+
   a {
     border-bottom: 1px solid #f08e80;
     color: #f08e80;
@@ -49,54 +52,40 @@ const CTAWrapper = styled.div`
     text-decoration: none;
   }
 
-  @media only screen and (max-width: 925px) {
-    text-align: center;
-  }
+  @media only screen and (max-width: 800px) {
+    width: 100%;
+    margin-left: 0rem;
 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 `
 
 const ImageWrapper = styled.div`
+  display: flex;
+  justify-content: center;
   margin-top: 2rem;
 
   img {
-    width: 90%;
+    border-radius: 2%;
+    width: 100%;
   }
 
-  @media only screen and (max-width: 925px) {
-    z-index: 10;
-    position: absolute;
-    top: 0;
-    right: 1rem;
+  @media only screen and (max-width: 800px) {
+    img { width: 60%;}
+  }
 
+  @media only screen and (max-width: 600px ) {
     img {
-      margin-top: -2rem;
-      float: right;
-      width: 40%;
+      width: 80%;
     }
   }
-
-  @media only screen and (max-width: 725px) {
-    img {
-      width: 35%;
-    }
-  }
-
-  @media only screen and (max-width: 600px) {
-    position: relative;
-    margin-left: 2rem;
-
-    img { width: 100%;}
-  }
-`
-
-const ImageDocumentWrapper = styled.div`
-  position: relative;
 `
 
 const Resume = () => {
   const pdfLink = 'assets/CaitlynMarrNewestResume.pdf'
   const [ isMobile, setIsMobile ] = useState()
-  const [ isMedium, setIsMedium ] = useState()
 
   useEffect(() => {
     const reportWindowSize = () => window.innerWidth
@@ -105,14 +94,8 @@ const Resume = () => {
       let size = reportWindowSize()
       if (size < 600) {
         setIsMobile(true)
-        setIsMedium(false)
-      }
-      else if (size >= 600 && size < 925) {
-        setIsMobile(false)
-        setIsMedium(true)
       } else {
         setIsMobile(false)
-        setIsMedium(false)
       }
     }
 
@@ -123,65 +106,23 @@ const Resume = () => {
 
   return (
     <Wrapper>
-      { !isMobile && !isMedium &&
-        <Fragment>
-          <DocumentWrapper>
-            <Document file={pdfLink} onLoadError={console.error}>
-              <Page pageNumber={1} width={600}></Page>
-            </Document>
-          </DocumentWrapper>
-          <CTAWrapper>
-            <a
-              href="https://static1.squarespace.com/static/605cb22e7c9f0b38065bb581/t/6092c67c64cfc81ed79a4f54/1620231804602/Caitlyn+Marr+Newest+Resume.pdf"
-              target="_blank"
-              >Download Resume
-            </a>
-            <ImageWrapper>
-              <img src="https://images.squarespace-cdn.com/content/v1/605cb22e7c9f0b38065bb581/1619138354619-SPHLTO1E2J591KL6D8GM/Caitlyn227.jpg?format=500w" alt="Caitlyn in black, closed smile"></img>
-            </ImageWrapper>
-          </CTAWrapper>
-        </Fragment>
-      }
-      { isMedium &&
-        <Fragment>
-          <CTAWrapper>
-            <a
-              href="https://static1.squarespace.com/static/605cb22e7c9f0b38065bb581/t/6092c67c64cfc81ed79a4f54/1620231804602/Caitlyn+Marr+Newest+Resume.pdf"
-              target="_blank"
-              >Download Resume
-            </a>
-          </CTAWrapper>
-          <ImageDocumentWrapper>
-            <ImageWrapper>
-              <img src="https://images.squarespace-cdn.com/content/v1/605cb22e7c9f0b38065bb581/1619138354619-SPHLTO1E2J591KL6D8GM/Caitlyn227.jpg?format=500w" alt="Caitlyn in black, closed smile"></img>
-            </ImageWrapper>
-            <DocumentWrapper>
-              <Document file={pdfLink} onLoadError={console.error}>
-                <Page className="page" pageNumber={1} width={700}></Page>
-              </Document>
-            </DocumentWrapper>
-          </ImageDocumentWrapper>
-        </Fragment>
-      }
-      { isMobile &&
-        <Fragment>
-          <DocumentWrapper>
-            <Document file={pdfLink} onLoadError={console.error}>
-              <Page className="page" pageNumber={1} width={700}></Page>
-            </Document>
-          </DocumentWrapper>
-          <CTAWrapper>
-            <a
-              href="https://static1.squarespace.com/static/605cb22e7c9f0b38065bb581/t/6092c67c64cfc81ed79a4f54/1620231804602/Caitlyn+Marr+Newest+Resume.pdf"
-              target="_blank"
-              >Download Resume
-            </a>
-          </CTAWrapper>
+      <Fragment>
+        <CTAWrapper>
+          <a
+            href="https://static1.squarespace.com/static/605cb22e7c9f0b38065bb581/t/6092c67c64cfc81ed79a4f54/1620231804602/Caitlyn+Marr+Newest+Resume.pdf"
+            target="_blank"
+            >Download Resume
+          </a>
           <ImageWrapper>
             <img src="https://images.squarespace-cdn.com/content/v1/605cb22e7c9f0b38065bb581/1619138354619-SPHLTO1E2J591KL6D8GM/Caitlyn227.jpg?format=500w" alt="Caitlyn in black, closed smile"></img>
           </ImageWrapper>
-        </Fragment>
-      }
+        </CTAWrapper>
+        <DocumentWrapper>
+          <Document file={pdfLink} onLoadError={console.error}>
+            <Page pageNumber={1} width={500}></Page>
+          </Document>
+        </DocumentWrapper>
+      </Fragment>
     </Wrapper>
   )
 }

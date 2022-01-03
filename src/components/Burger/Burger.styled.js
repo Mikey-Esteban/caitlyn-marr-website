@@ -3,15 +3,16 @@ import styled from "styled-components";
 
 export const StyledBurger = styled.button`
   position: absolute;
-  top: 5%;
-  right: 2rem;
+  top: 2rem;
+  right: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: 2rem;
-  height: 2rem;
+  width: 30px; /* 2rem */
+  height: 32px; /* 2rem */
   background: transparent;
   border: none;
+  color: white;
   cursor: pointer;
   padding: 0;
   z-index: 101;
@@ -21,10 +22,10 @@ export const StyledBurger = styled.button`
   }
 
   div {
-    width: 2.05rem;
-    height: 0.15rem;
+    width: 32px; /* 2.05rem */
+    height: 2px; /* .15rem */
     background: ${({ theme, open }) =>
-      open ? 'black' : 'black'};
+      open ? 'white' : 'white'};
     border-radius: 10px;
     transition: all 0.3s linear;
     position: relative;

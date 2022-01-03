@@ -6,6 +6,9 @@ const ImageWrapper = styled.div`
 
   width: 50%;
   img {
+    max-height: 300px;
+    max-width: 278px;
+    border-radius: 50%;
     width: ${props => props.aboutImage? '100%' : '100%'};
   }
 

@@ -1,9 +1,9 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import { Instagram } from '@styled-icons/boxicons-logos/Instagram'
 
 const Wrapper = styled.div`
+  z-index: 2;
   margin: 0 50px;
 
   height: 80px;
@@ -24,28 +24,31 @@ const Button = styled.button`
 const TitleWrapper = styled.button`
   background: none;
   border: none;
+  color: white;
   cursor: pointer;
 
   font-family: 'Montserrat', sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: 400;
   letter-spacing: .1rem;
 `
 
 const LinksWrapper = styled.div`
-  button {
+  display: flex;
+  align-items: center;
 
+  button {
     background: none;
     border: none;
-    color: black;
+    color: white;
     cursor: pointer;
     font-family: 'Lato', sans-serif;
-    font-size: .8rem;
+    font-size: 1rem;
     font-weight: 300;
 
     /* Set up the hover */
     /* If you aren't using autoprefix, remember to prefix the gradient for other browsers */
-    background-image: linear-gradient(black, black);
+    background-image: linear-gradient(white, white);
     background-size: 0 1px, auto;
     background-repeat: no-repeat;
     background-position: center bottom;
@@ -60,24 +63,23 @@ const LinksWrapper = styled.div`
 `
 
 
-const Navbar = ({redirect, isMobile, activeTab}) => {
-  let navigate = useNavigate()
+const Navbar = ({isMobile, activeTab}) => {
 
   return (
     <Wrapper>
-      <TitleWrapper onClick={redirect('/', navigate)}>
+      <TitleWrapper>
         CAITLYN MARR
       </TitleWrapper>
       <LinksWrapper>
-        <Button active={activeTab['about']} onClick={redirect('/about', navigate)} >About</Button>
-        <Button active={activeTab['resume']} onClick={redirect('/resume', navigate)} >Resume</Button>
-        <Button active={activeTab['gallery']} onClick={redirect('/gallery', navigate)} >Gallery</Button>
-        <Button active={activeTab['media']} onClick={redirect('/media', navigate)} >Media</Button>
-        <Button active={activeTab['contact']} onClick={redirect('/contact', navigate)} >Contact</Button>
+        <Button active={activeTab['about']} >About</Button>
+        <Button active={activeTab['resume']} >Resume</Button>
+        <Button active={activeTab['gallery']} >Gallery</Button>
+        <Button active={activeTab['media']} >Media</Button>
+        <Button active={activeTab['contact']} >Contact</Button>
         <Instagram
           size={20}
           onClick={() => window.open('https://www.instagram.com/caitlynmarr22/')}
-          style={{color: '#282625', cursor: 'pointer' }}
+          style={{color: 'white', cursor: 'pointer' }}
         />
       </LinksWrapper>
     </Wrapper>

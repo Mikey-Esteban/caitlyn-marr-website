@@ -5,10 +5,15 @@ import styled from 'styled-components'
 
 
 const Wrapper = styled.div`
+  margin-top: 4rem;
+  padding: 4rem 0;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  background: #171717;
+  color: white;
 
   h1 {
     font-size: 1.5rem;

@@ -4,6 +4,7 @@ import styled from 'styled-components'
 
 import Button from '../Button/Button'
 import Image from '../Image/Image'
+import Instagram from '../Instagram/Instagram'
 
 const Wrapper = styled.div`
   margin: 0 50px;
@@ -44,7 +45,7 @@ const TitleWrapper = styled.h1`
 const MobileWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
 `
 
 const Landing = ({redirect, isMobile}) => {
@@ -53,6 +54,7 @@ const Landing = ({redirect, isMobile}) => {
 
   return (
     <Wrapper>
+      <Instagram />
       { isMobile ?
         <MobileWrapper>
           <TitleWrapper>ACTOR</TitleWrapper>

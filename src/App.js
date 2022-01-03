@@ -1,11 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
 
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-} from 'react-router-dom';
-
 import './App.css';
 import styled from 'styled-components';
 import { useOnClickOutside } from "./hooks";
@@ -14,12 +8,14 @@ import {
   Navbar,
   Burger,
   Menu,
+  Welcome,
   Landing,
   About,
   Resume,
   Gallery,
   Media,
   Contact,
+  Instagram,
   Carousel,
   Footer
 } from './components'
@@ -31,25 +27,13 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
 
-  .body {
-    flex-grow: 1;
-    display: flex;
-    align-items: flex-start;
-  }
   .footer {
     flex-shrink: 0;
-  }
-
-  @media only screen and (max-width: 600px) {
-    .body {
-      align-items: center;
-    }
   }
 `
 
 const MobileNavbar = styled.div`
   margin: 0 50px;
-
   height: 80px;
   display: flex;
   justify-content: space-between;
@@ -92,7 +76,7 @@ function App() {
     }
 
     const willChangeToBurger = () => {
-      reportWindowSize() <= 600 ? setIsBurgerNavbar(true) : setIsBurgerNavbar(false)
+      reportWindowSize() <= 680 ? setIsBurgerNavbar(true) : setIsBurgerNavbar(false)
     }
 
     willChangeToMobile()
@@ -102,22 +86,6 @@ function App() {
     window.addEventListener('resize', willChangeToBurger)
   })
 
-  // function that returns function ..uses useNavigate
-  const handleRedirect = (link, func) => () => {
-    console.log('redirect is called');
-    const stripped = link.substring(1)
-    // reset active tab
-    const newActiveTab = {...activeTab}
-    for (const tab in newActiveTab) {
-      newActiveTab[tab] = false
-    }
-    // make link new active table
-    newActiveTab[stripped] = true
-    // set newActiveTab
-    setActiveTab(newActiveTab)
-
-    func(link)
-  }
 
   // decide which navbar
   const renderNavbar = () => {
@@ -128,35 +96,30 @@ function App() {
             CAITLYN MARR
           </TitleWrapper>
           <Burger open={open} setOpen={setOpen} />
-          <Menu open={open} setOpen={setOpen} redirect={handleRedirect} />
+          <Menu open={open} setOpen={setOpen} />
         </MobileNavbar>
       );
     } else {
       return (
-        <Navbar redirect={handleRedirect} isMobile={isMobile} activeTab={activeTab} />
+        <Navbar isMobile={isMobile} activeTab={activeTab} />
       );
     }
   };
 
   return (
-    <Router>
       <Wrapper>
         {renderNavbar()}
-        <div className="body">
-          <Routes>
-            <Route exact path ='/' element={<Landing redirect={handleRedirect} isMobile={isMobile} />} />
-            <Route exact path ='/about' element={<About redirect={handleRedirect} isMobile={isMobile} />} />
-            <Route exact path ='/resume' element={<Resume redirect={handleRedirect} />} />
-            <Route exact path ='/gallery' element={<Gallery redirect={handleRedirect} isMobile={isMobile} />} />
-            <Route exact path ='/media' element={<Media redirect={handleRedirect} isMobile={isMobile} />} />
-            <Route exact path ='/contact' element={<Contact redirect={handleRedirect} isMobile={isMobile} />} />
-          </Routes>
-        </div>
+        <Welcome />
+        <About isMobile={isMobile} />
+        <Resume />
+        <Gallery isMobile={isMobile} />
+        <Media />
+        <Contact />
+        <Instagram />
         <div className="footer">
           <Footer />
         </div>
       </Wrapper>
-    </Router>
   );
 }
 

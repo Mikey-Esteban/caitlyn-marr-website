@@ -11,7 +11,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  gap: 5rem;
+  gap: 3rem;
 
   @media only screen and (max-width: 480px) {
     flex-direction: column;
@@ -25,13 +25,18 @@ const Wrapper = styled.div`
 `
 
 const CTAWrapper = styled.div`
-  width: 50%;
+  width: 60%;
 
   display: flex;
   gap: 2rem;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+
+  @media only screen and (min-width: 800px) {
+    /* change display value to float image */
+    width: 50%;
+  }
 `
 
 const TitleWrapper = styled.h1`
@@ -67,7 +72,7 @@ const MediumMobileWrapper = styled.div`
 
 const MobileWrapper = styled.div``
 
-const About = ({redirect, isMobile}) => {
+const About = ({isMobile}) => {
 
   const [ isMedium, setIsMedium ] = useState()
   const [ isLarge, setIsLarge ] = useState()
@@ -104,6 +109,7 @@ const About = ({redirect, isMobile}) => {
         <MediumMobileWrapper>
           <Image
             src={'https://images.squarespace-cdn.com/content/v1/605cb22e7c9f0b38065bb581/1619134613548-SO8CDAJT1C1M4CARD7LC/Caitlyn126.jpg?format=750w'}
+            src={'https://images.squarespace-cdn.com/content/v1/605cb22e7c9f0b38065bb581/1619206921921-PP0I5RCVLAMAU4PJ744F/Caitlyn276_.jpg?format=500w'}
             alt={'Caitlyn in blue, open smile'}
             aboutImage={true}
           />
@@ -139,6 +145,7 @@ const About = ({redirect, isMobile}) => {
           </CTAWrapper>
           <Image
             src={'https://images.squarespace-cdn.com/content/v1/605cb22e7c9f0b38065bb581/1619134613548-SO8CDAJT1C1M4CARD7LC/Caitlyn126.jpg?format=750w'}
+            src={'https://images.squarespace-cdn.com/content/v1/605cb22e7c9f0b38065bb581/1619206921921-PP0I5RCVLAMAU4PJ744F/Caitlyn276_.jpg?format=500w'}
             alt={'Caitlyn in blue, open smile'}
             aboutImage={true}
           />
