@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import Form from '../Form/Form'
 
 const Wrapper = styled.div`
-  margin-top: 4rem;
   width: 100%;
   display: flex;
   flex-direction: column;

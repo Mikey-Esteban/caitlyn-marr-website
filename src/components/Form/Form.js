@@ -98,47 +98,6 @@ const HRWrapper = styled.div`
   margin: 3rem 0 2rem 0;
 `
 
-const CTAWrapper = styled.div`
-  display: grid;
-  grid-template-columns: 3fr 2fr 2fr;
-`
-
-const IconsWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  gap: 5px;
-  flex-wrap: wrap;
-
-  img {
-    width: 70px;
-    cursor: pointer;
-    transition: all ease 150ms;
-  }
-
-  img:hover {
-    box-shadow: 0 0 0 3px #534f4b;
-  }
-`
-const ProfileWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-`
-const PhoneWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-`
-const EmailWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-`
-
 const Form = () => {
   const form = useRef();
 
@@ -154,10 +113,6 @@ const Form = () => {
   const [ firstNameError, setFirstNameError ] = useState()
   const [ emailError, setEmailError ] = useState()
   const [ messageError, setMessageError ] = useState()
-
-  const handleGoToProfile = url => () => {
-    window.open(url)
-  }
 
   const resetInputValues = () => {
     setMessageData({
@@ -299,32 +254,6 @@ const Form = () => {
       </FieldWrapper>
 
       <HRWrapper><hr/></HRWrapper>
-
-      <CTAWrapper>
-        <ProfileWrapper>
-          <Profile size={30} color="#a89f99"/>
-          <IconsWrapper>
-            <img
-              src="/assets/images/actorsaccess.png"
-              alt="actors access icon"
-              onClick={handleGoToProfile('https://resumes.actorsaccess.com/caitlynmarr')}
-            />
-            <img
-              src="/assets/images/backstage.png"
-              alt="backstage icon"
-              onClick={handleGoToProfile('https://www.backstage.com/u/caitlynmarr/')}
-            />
-          </IconsWrapper>
-        </ProfileWrapper>
-        <EmailWrapper>
-          <Email size={30} color="#a89f99"/>
-          <p>caitlynmarr22@gmail.com</p>
-        </EmailWrapper>
-        <PhoneWrapper>
-          <PhoneFill size={30} color="#a89f99"/>
-          <p>(305) 775 2428</p>
-        </PhoneWrapper>
-      </CTAWrapper>
     </StyledForm>
   )
 }

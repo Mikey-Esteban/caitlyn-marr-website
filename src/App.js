@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef } from 'react'
-
+import { useState, useEffect, useRef } from 'react';
+import axios from 'axios';
 import './App.css';
 import styled from 'styled-components';
 import { useOnClickOutside } from "./hooks";
@@ -11,12 +11,10 @@ import {
   Welcome,
   Landing,
   About,
-  Resume,
-  Gallery,
+  Mosaic,
   Media,
-  Contact,
+  ResumeContact,
   Instagram,
-  Carousel,
   Footer
 } from './components'
 
@@ -26,10 +24,6 @@ const Wrapper = styled.div`
 
   display: flex;
   flex-direction: column;
-
-  .footer {
-    flex-shrink: 0;
-  }
 `
 
 const MobileNavbar = styled.div`
@@ -46,12 +40,20 @@ const TitleWrapper = styled.h1`
   letter-spacing: .1rem;
 `
 
-function App() {
-  const node = useRef();
+const ResumeContactWrapper = styled.div`
+  display: flex;
+`
 
-  // usestate
+function App() {
+  // node for menu burger
+  const node = useRef();
+  // access token for instagram api
+  const access_token = process.env['REACT_APP_INSTAGRAM_ACCESS_TOKEN']
+
+  // useState for instagram gird
+  const [ isLoaded, setIsLoaded ] = useState(false)
+  const [ instaGrid, setInstaGrid ] = useState()
   const [isMobile, setIsMobile ] = useState()
-  // useState for active navbar
   const [activeTab, setActiveTab] = useState({
     'about': false,
     'resume': false,
@@ -66,25 +68,67 @@ function App() {
 
   // listener to close burger menu when clicking
   useOnClickOutside(node, () => setOpen(false));
+  // function to change to mobile
+  const willChangeToMobile = () => window.innerWidth <= 480 ? setIsMobile(true) : setIsMobile(false)
+  // function to change to burger menu
+  const willChangeToBurger = () => window.innerWidth <= 680 ? setIsBurgerNavbar(true) : setIsBurgerNavbar(false)
 
   useEffect(() => {
-    const reportWindowSize = () => window.innerWidth
-
-    const willChangeToMobile = () => {
-      console.log('REPORTING WINDOW SIZE', reportWindowSize());
-      reportWindowSize() <= 480 ? setIsMobile(true) : setIsMobile(false)
-    }
-
-    const willChangeToBurger = () => {
-      reportWindowSize() <= 680 ? setIsBurgerNavbar(true) : setIsBurgerNavbar(false)
-    }
-
+    // initialize if mobile and if burger
     willChangeToMobile()
     willChangeToBurger()
 
     window.addEventListener('resize', willChangeToMobile)
     window.addEventListener('resize', willChangeToBurger)
-  })
+
+    // hit my rails instgram api
+    axios.get(`http://127.0.0.1:3000/api/v1/get_last_nine`)
+      .then(resp => {
+        console.log(resp);
+        setInstaGrid(resp.data)
+        setIsLoaded(true)
+      })
+
+    // hit my rails instagram api
+    axios.get(`http://127.0.0.1:3000/api/v1/last_accessed`)
+      .then(resp => {
+        const last_accessed = resp.data.last_accessed
+        // calculate hours diff
+        let hours_diff = Math.abs(Date.now() - Date.parse(last_accessed)) / 3600000
+        // if greater than 1, post request to create another access object
+        if (hours_diff >= 1) {
+          // create new access instance
+          const access = { last_accessed: Date.now() }
+          axios.post(`http://127.0.0.1:3000/api/v1/accesses`, {access})
+            .then(resp => console.log(resp))
+            .catch(error => console.log(error))
+          // hit instagram api
+          axios.get(`https://graph.instagram.com/me/media?fields=id,caption&access_token=${access_token}`)
+            .then(resp => {
+              console.log(resp);
+              // grab most recent
+              const mostRecent = resp.data.data[0]
+              // grab latest rails api instagram post
+              axios.get(`http://127.0.0.1:3000/api/v1/get_most_recent`)
+                .then(resp => {
+                  console.log(resp);
+                  const latestPost = resp.data
+                  // check to see if ids are the same
+                  console.log('ID SAME?', mostRecent.id === latestPost.media_id);
+
+                  /////////////
+                  // BIG TO DO LIST
+                  // get all user media
+                  // filter whatever isnt already in rails instagram api
+                  // add each to rails instagram api
+                })
+                .catch(error => console.log(error))
+            })
+            .catch(error => console.log(error))
+        }
+      })
+      .catch(error => console.log(error))
+  }, [])
 
 
   // decide which navbar
@@ -111,14 +155,16 @@ function App() {
         {renderNavbar()}
         <Welcome />
         <About isMobile={isMobile} />
-        <Resume />
-        <Gallery isMobile={isMobile} />
+        {/* <Gallery isMobile={isMobile} /> */}
+        <Mosaic />
         <Media />
-        <Contact />
-        <Instagram />
-        <div className="footer">
-          <Footer />
-        </div>
+        <ResumeContact />
+        {/* <ResumeContactWrapper>
+          <Resume />
+          <Contact />
+        </ResumeContactWrapper> */}
+        {isLoaded && <Instagram grid={instaGrid} />}
+        <Footer />
       </Wrapper>
   );
 }

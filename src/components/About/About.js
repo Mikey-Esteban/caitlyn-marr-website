@@ -25,6 +25,7 @@ const Wrapper = styled.div`
 `
 
 const CTAWrapper = styled.div`
+  margin-left: 3rem;
   width: 60%;
 
   display: flex;
@@ -104,7 +105,7 @@ const About = ({isMobile}) => {
 
 
   return (
-    <Wrapper>
+    <Wrapper id="about">
       { (isMobile || isMedium) &&
         <MediumMobileWrapper>
           <Image

@@ -1,46 +1,83 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import React from 'react'
 
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
   margin-top: 4rem;
-  padding: 4rem 0;
+  margin-bottom: 4rem;
+  ${'' /* background: #171717; */}
+  ${'' /* color: white; */}
 
-  background: #171717;
-  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `
-const Instagram = () => {
 
-  const access_token = process.env['REACT_APP_INSTAGRAM_ACCESS_TOKEN']
-  const [ photoIds, setPhotoIds ] = useState()
-  const [ imgUrl, setImgUrl ] = useState()
+const GridWrapper = styled.div`
+  max-width: 500px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
 
-  useEffect(() => {
-    axios.get(`https://graph.instagram.com/me/media?fields=id,caption&access_token=${access_token}`)
-      .then(resp => {
-        console.log(resp);
-        const mediaIds = resp.data.data
-        setPhotoIds(mediaIds)
+  .overlay {
+    position: relative;
+  }
 
-        axios.get(`https://graph.instagram.com/${mediaIds[0].id}?fields=id,media_type,media_url,username,timestamp&access_token=${access_token}`)
-          .then(resp => {
-            console.log(resp);
-            setImgUrl(resp.data.media_url)
-          })
-          .catch(error => {
-            console.log(error);
-          })
-      })
-      .catch(error => {
-        console.log(error);
-      })
-  }, [])
+  .caption {
+    background: rgba(0 ,0 ,0 , .5);
+    color: white;
+    cursor: pointer;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150px;
+    height: 150px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .caption:hover {
+    background: none;
+    color: transparent;
+  }
+
+  .caption:hover + img {
+    filter: grayscale(0);
+  }
+
+  img {
+    filter: grayscale(100%);
+    width: 150px;
+    height: 150px;
+  }
+
+  img:hover {
+    filter: grayscale(0);
+  }
+`
+const Instagram = ({grid}) => {
+
+  console.log('INSTAGRAM COMPONET', grid);
+
+
+  let list = grid.map(data => {
+    return (
+      <div className="overlay" key={data.id}>
+        <div className="caption" onClick={() => window.open('https://www.instagram.com/mikeyesteban.design/')}>{data.caption}</div>
+        <img src={data.media_url} alt=""/>
+      </div>
+    )
+  })
 
   return (
-    <Wrapper>
-      I AM INSTAGRAM
-      {imgUrl && <img src={imgUrl} alt=""/>}
+    <Wrapper id="instagram">
+      <GridWrapper>
+        {list}
+      </GridWrapper>
     </Wrapper>
   )
 }

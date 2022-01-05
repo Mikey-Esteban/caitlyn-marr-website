@@ -12,8 +12,8 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
 
-  background: #171717;
-  color: white;
+  /* background: #171717; */
+  /* color: white; */
 
   h1 {
     font-size: 1.5rem;
@@ -41,7 +41,7 @@ const Wrapper = styled.div`
 `
 
 const ButtonsWrapper = styled.div`
-  width: 90%;
+  width: 70%;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
@@ -77,7 +77,7 @@ const Media = () => {
 
 
   return (
-    <Wrapper>
+    <Wrapper id="media">
       { activeVideo.title == caitlynVideos[0].title &&
         <Fragment>
           <h1>{activeVideo.title}</h1>

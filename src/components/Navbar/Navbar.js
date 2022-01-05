@@ -65,17 +65,24 @@ const LinksWrapper = styled.div`
 
 const Navbar = ({isMobile, activeTab}) => {
 
+  const handleClick = selector => {
+    console.log('NAVBAR CLICK WORKING');
+    let element = document.querySelector(`#${selector}`)
+    console.log(element);
+    element.scrollIntoView({behavior: "smooth"});
+  }
+
   return (
     <Wrapper>
       <TitleWrapper>
         CAITLYN MARR
       </TitleWrapper>
       <LinksWrapper>
-        <Button active={activeTab['about']} >About</Button>
-        <Button active={activeTab['resume']} >Resume</Button>
-        <Button active={activeTab['gallery']} >Gallery</Button>
-        <Button active={activeTab['media']} >Media</Button>
-        <Button active={activeTab['contact']} >Contact</Button>
+        <Button active={activeTab['about']} onClick={() => handleClick('about')}>About</Button>
+        <Button active={activeTab['resume']} onClick={() => handleClick('resumeContact')}>Resume</Button>
+        <Button active={activeTab['gallery']} onClick={() => handleClick('mosaic')} >Gallery</Button>
+        <Button active={activeTab['media']} onClick={() => handleClick('media')}>Media</Button>
+        <Button active={activeTab['contact']} onClick={() => handleClick('resumeContact')}>Contact</Button>
         <Instagram
           size={20}
           onClick={() => window.open('https://www.instagram.com/caitlynmarr22/')}

@@ -15,10 +15,10 @@ const GalleryWrapper = styled.div`
   gap: 1rem;
 
   img {
-    height: 150px;
+    height: 125px;
     object-fit: cover;
     object-position: center;
-    width:  150px;
+    width:  125px;
   }
 
   @media only screen and (max-width: 480px) {
