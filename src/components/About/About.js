@@ -8,21 +8,19 @@ import Image from '../Image/Image'
 const Wrapper = styled.div`
   width: 100%;
   padding: 4rem 0;
-  margin: 0 50px;
 
   display: flex;
   justify-content: center;
   align-items: flex-start;
   gap: 3rem;
 
-  ${'' /* @media only screen and (max-width: 625px) {
-    flex-direction: column;
-    gap: 1rem;
-  } */}
-
-  @media only screen and (max-width: 625px) {
+  @media only screen and (max-width: 800px) {
     /* change display value to float image */
     display: block;
+
+    img {
+      margin-bottom: 2rem;
+    }
   }
 `
 
@@ -58,11 +56,9 @@ const InfoWrapper = styled.div`
 `
 
 const MediumMobileWrapper = styled.div`
-  @media only screen and (min-width: 480px) {
-    width: 100%;
-    margin: 0 auto;
-    overflow: hidden;
-  }
+  padding: 0 3rem;
+  width: 100%;
+  overflow: hidden;
 `
 
 const ImageWrapper = styled.div`
@@ -144,7 +140,7 @@ const About = ({isMobile}) => {
             <Image
               src={'https://images.squarespace-cdn.com/content/v1/605cb22e7c9f0b38065bb581/1619134613548-SO8CDAJT1C1M4CARD7LC/Caitlyn126.jpg?format=750w'}
               src={'https://images.squarespace-cdn.com/content/v1/605cb22e7c9f0b38065bb581/1619206921921-PP0I5RCVLAMAU4PJ744F/Caitlyn276_.jpg?format=500w'}
-              alt={'Caitlyn in blue, open smile'}
+              alt={'Caitlyn in black, closed smile'}
               aboutImage={true}
             />
           </ImageWrapper>
