@@ -97,9 +97,14 @@ const Welcome = () => {
       content.style.backgroundColor = 'rgba(0, 0, 0, .5)';
     })
   }
+
+  const handleClick = selector => {
+    let element = document.querySelector(`#${selector}`)
+    element.scrollIntoView({behavior: "smooth"});
+  }
+
   useEffect(() => {
     const video = document.querySelector('#myVideo')
-
     video.addEventListener('ended', videoHasEnded)
   }, [])
 
@@ -111,8 +116,8 @@ const Welcome = () => {
 
       <div id="shadow">
         <div className="content opaque" id="landingContent">
-          <h1 id="title">CAITLYN MARR</h1>
-          <button id="myBtn" >Actor</button>
+          <h1 id="title" onClick={() => handleClick('about')}>CAITLYN MARR</h1>
+          <button id="myBtn" onClick={() => handleClick('media')}>Actor</button>
         </div>
       </div>
     </Wrapper>

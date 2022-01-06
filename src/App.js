@@ -12,6 +12,8 @@ import {
   Landing,
   About,
   Mosaic,
+  Images,
+  Gallery,
   Media,
   ResumeContact,
   Instagram,
@@ -65,6 +67,8 @@ function App() {
   // useState for mobile navbar
   const [ isBurgerNavbar, setIsBurgerNavbar ] = useState()
   const [open, setOpen] = useState(false);
+  // useState for mosaic
+  const [ isMosaic, setIsMosaic ] = useState()
 
   // listener to close burger menu when clicking
   useOnClickOutside(node, () => setOpen(false));
@@ -72,14 +76,19 @@ function App() {
   const willChangeToMobile = () => window.innerWidth <= 480 ? setIsMobile(true) : setIsMobile(false)
   // function to change to burger menu
   const willChangeToBurger = () => window.innerWidth <= 680 ? setIsBurgerNavbar(true) : setIsBurgerNavbar(false)
+  // functino to change mosaic
+  const willChangeToMosaic = () => window.innerWidth >= 480 ? setIsMosaic(true) : setIsMosaic(false)
 
   useEffect(() => {
     // initialize if mobile and if burger
     willChangeToMobile()
     willChangeToBurger()
+    // initialize if mosaic
+    willChangeToMosaic()
 
     window.addEventListener('resize', willChangeToMobile)
     window.addEventListener('resize', willChangeToBurger)
+    window.addEventListener('resize', willChangeToMosaic)
 
     // hit my rails instgram api
     axios.get(`http://127.0.0.1:3000/api/v1/get_last_nine`)
@@ -155,14 +164,9 @@ function App() {
         {renderNavbar()}
         <Welcome />
         <About isMobile={isMobile} />
-        {/* <Gallery isMobile={isMobile} /> */}
-        <Mosaic />
+        { isMosaic ? <Mosaic /> : <Images />}
         <Media />
         <ResumeContact />
-        {/* <ResumeContactWrapper>
-          <Resume />
-          <Contact />
-        </ResumeContactWrapper> */}
         {isLoaded && <Instagram grid={instaGrid} />}
         <Footer />
       </Wrapper>

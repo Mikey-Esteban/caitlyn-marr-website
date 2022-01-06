@@ -5,7 +5,7 @@ import Resume from '../Resume/Resume';
 import Contact from '../Contact/Contact';
 
 const Wrapper = styled.div`
-  margin-top: 4rem;
+  padding-top: 4rem;
   display: flex;
   flex-direction: column;
   align-items: center;

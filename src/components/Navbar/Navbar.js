@@ -66,9 +66,7 @@ const LinksWrapper = styled.div`
 const Navbar = ({isMobile, activeTab}) => {
 
   const handleClick = selector => {
-    console.log('NAVBAR CLICK WORKING');
     let element = document.querySelector(`#${selector}`)
-    console.log(element);
     element.scrollIntoView({behavior: "smooth"});
   }
 
@@ -85,7 +83,7 @@ const Navbar = ({isMobile, activeTab}) => {
         <Button active={activeTab['contact']} onClick={() => handleClick('resumeContact')}>Contact</Button>
         <Instagram
           size={20}
-          onClick={() => window.open('https://www.instagram.com/caitlynmarr22/')}
+          onClick={() => handleClick('instagram')}
           style={{color: 'white', cursor: 'pointer' }}
         />
       </LinksWrapper>

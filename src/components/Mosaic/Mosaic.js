@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
-  margin-top: 8rem;
+  padding-top: 8rem;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -29,6 +29,14 @@ const ModalContainer = styled.div`
     height: auto;
   }
 
+
+  @media only screen and (max-width: 825px) {
+    img {
+      max-width: 480px;
+      max-height: 400px;
+      height: auto;
+    }
+  }
 `
 
 const ImagesContainer = styled.div`
@@ -43,6 +51,14 @@ const ImagesContainer = styled.div`
     "d d d b b b e e"
     "d d d b b b e e"
   ;
+
+  @media only screen and (max-width: 825px) {
+    grid-template-rows: 70px 70px 70px 69px;
+  }
+
+  @media only screen and (max-width: 625px) {
+    grid-template-rows: 55px 55px 55px 54px;
+  }
 
   .photo > img {
     cursor: pointer;

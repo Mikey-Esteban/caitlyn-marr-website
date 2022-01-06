@@ -3,7 +3,7 @@ import React from 'react'
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  margin-top: 4rem;
+  padding-top: 4rem;
   margin-bottom: 4rem;
   ${'' /* background: #171717; */}
   ${'' /* color: white; */}
@@ -19,6 +19,11 @@ const GridWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 15px;
+
+  @media only screen and (max-width: 525px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
 
   .overlay {
     position: relative;

@@ -6,6 +6,7 @@ import Button from '../Button/Button'
 import Image from '../Image/Image'
 
 const Wrapper = styled.div`
+  padding: 4rem 0;
   margin: 0 50px;
 
   display: flex;

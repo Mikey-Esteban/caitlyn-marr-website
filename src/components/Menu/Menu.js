@@ -6,22 +6,22 @@ const Menu = ({ open, setOpen }) => {
 
   return (
     <StyledMenu open={open} onClick={() => setOpen(!open)} >
-      <a href="#" >
+      <a href="#about" >
         About
       </a>
-      <a href="#" >
+      <a href="#resumeContact" >
         Resume
       </a>
-      <a href="#" >
+      <a href="#mosaic" >
         Gallery
       </a>
-      <a href="#" >
+      <a href="#media" >
         Media
       </a>
-      <a href="#" >
+      <a href="#resumeContact" >
         Contact
       </a>
-      <a href="#" onClick={() => window.open('https://www.instagram.com/caitlynmarr22/')}>
+      <a href="#instagram">
         Instagram
       </a>
     </StyledMenu>
