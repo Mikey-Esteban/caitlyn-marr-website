@@ -6,6 +6,7 @@ import Button from '../Button/Button'
 import Image from '../Image/Image'
 
 const Wrapper = styled.div`
+  width: 100%;
   padding: 4rem 0;
   margin: 0 50px;
 
@@ -14,10 +15,10 @@ const Wrapper = styled.div`
   align-items: flex-start;
   gap: 3rem;
 
-  @media only screen and (max-width: 480px) {
+  ${'' /* @media only screen and (max-width: 625px) {
     flex-direction: column;
     gap: 1rem;
-  }
+  } */}
 
   @media only screen and (max-width: 625px) {
     /* change display value to float image */
@@ -26,8 +27,7 @@ const Wrapper = styled.div`
 `
 
 const CTAWrapper = styled.div`
-  margin-left: 3rem;
-  width: 60%;
+  width: 50%;
 
   display: flex;
   gap: 2rem;
@@ -35,9 +35,9 @@ const CTAWrapper = styled.div`
   justify-content: center;
   align-items: flex-start;
 
-  @media only screen and (min-width: 800px) {
+  @media only screen and (min-width: 1000px) {
     /* change display value to float image */
-    width: 50%;
+    width: 30%;
   }
 `
 
@@ -58,21 +58,16 @@ const InfoWrapper = styled.div`
 `
 
 const MediumMobileWrapper = styled.div`
-  .imageWrapper {
-    margin-bottom: 1rem;
-  }
   @media only screen and (min-width: 480px) {
+    width: 100%;
+    margin: 0 auto;
     overflow: hidden;
-
-    .imageWrapper {
-      margin-left: 1rem;
-      float: right;
-      width: 215px;
-    }
   }
 `
 
-const MobileWrapper = styled.div``
+const ImageWrapper = styled.div`
+  width: 50%;
+`
 
 const About = ({isMobile}) => {
 
@@ -112,7 +107,7 @@ const About = ({isMobile}) => {
           <Image
             src={'https://images.squarespace-cdn.com/content/v1/605cb22e7c9f0b38065bb581/1619134613548-SO8CDAJT1C1M4CARD7LC/Caitlyn126.jpg?format=750w'}
             src={'https://images.squarespace-cdn.com/content/v1/605cb22e7c9f0b38065bb581/1619206921921-PP0I5RCVLAMAU4PJ744F/Caitlyn276_.jpg?format=500w'}
-            alt={'Caitlyn in blue, open smile'}
+            alt={'Caitlyn in black, closed smile'}
             aboutImage={true}
           />
           <TitleWrapper>Welcome!</TitleWrapper>
@@ -145,12 +140,14 @@ const About = ({isMobile}) => {
             </InfoWrapper>
             <Button text='Contact' handleClick={() => window.open('https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=mailto&to=caitlynmarr22@gmail.com')}/>
           </CTAWrapper>
-          <Image
-            src={'https://images.squarespace-cdn.com/content/v1/605cb22e7c9f0b38065bb581/1619134613548-SO8CDAJT1C1M4CARD7LC/Caitlyn126.jpg?format=750w'}
-            src={'https://images.squarespace-cdn.com/content/v1/605cb22e7c9f0b38065bb581/1619206921921-PP0I5RCVLAMAU4PJ744F/Caitlyn276_.jpg?format=500w'}
-            alt={'Caitlyn in blue, open smile'}
-            aboutImage={true}
-          />
+          <ImageWrapper>
+            <Image
+              src={'https://images.squarespace-cdn.com/content/v1/605cb22e7c9f0b38065bb581/1619134613548-SO8CDAJT1C1M4CARD7LC/Caitlyn126.jpg?format=750w'}
+              src={'https://images.squarespace-cdn.com/content/v1/605cb22e7c9f0b38065bb581/1619206921921-PP0I5RCVLAMAU4PJ744F/Caitlyn276_.jpg?format=500w'}
+              alt={'Caitlyn in blue, open smile'}
+              aboutImage={true}
+            />
+          </ImageWrapper>
         </Fragment>
       }
     </Wrapper>

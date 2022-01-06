@@ -63,7 +63,7 @@ const LinksWrapper = styled.div`
 `
 
 
-const Navbar = ({isMobile, activeTab}) => {
+const Navbar = ({isMobile}) => {
 
   const handleClick = selector => {
     let element = document.querySelector(`#${selector}`)
@@ -76,11 +76,11 @@ const Navbar = ({isMobile, activeTab}) => {
         CAITLYN MARR
       </TitleWrapper>
       <LinksWrapper>
-        <Button active={activeTab['about']} onClick={() => handleClick('about')}>About</Button>
-        <Button active={activeTab['resume']} onClick={() => handleClick('resumeContact')}>Resume</Button>
-        <Button active={activeTab['gallery']} onClick={() => handleClick('mosaic')} >Gallery</Button>
-        <Button active={activeTab['media']} onClick={() => handleClick('media')}>Media</Button>
-        <Button active={activeTab['contact']} onClick={() => handleClick('resumeContact')}>Contact</Button>
+        <Button onClick={() => handleClick('about')}>About</Button>
+        <Button onClick={() => handleClick('resumeContact')}>Resume</Button>
+        <Button onClick={() => handleClick('mosaic')} >Gallery</Button>
+        <Button onClick={() => handleClick('media')}>Media</Button>
+        <Button onClick={() => handleClick('resumeContact')}>Contact</Button>
         <Instagram
           size={20}
           onClick={() => handleClick('instagram')}

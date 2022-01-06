@@ -56,10 +56,6 @@ const ImagesContainer = styled.div`
     grid-template-rows: 70px 70px 70px 69px;
   }
 
-  @media only screen and (max-width: 625px) {
-    grid-template-rows: 55px 55px 55px 54px;
-  }
-
   .photo > img {
     cursor: pointer;
     width: 100%;

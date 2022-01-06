@@ -13,7 +13,6 @@ import {
   About,
   Mosaic,
   Images,
-  Gallery,
   Media,
   ResumeContact,
   Instagram,
@@ -46,6 +45,10 @@ const ResumeContactWrapper = styled.div`
   display: flex;
 `
 
+const localHost = 'http://127.0.0.1:3000/api/v1/'
+const heroku = 'https://aqueous-beach-38647.herokuapp.com/api/v1'
+
+
 function App() {
   // node for menu burger
   const node = useRef();
@@ -56,14 +59,6 @@ function App() {
   const [ isLoaded, setIsLoaded ] = useState(false)
   const [ instaGrid, setInstaGrid ] = useState()
   const [isMobile, setIsMobile ] = useState()
-  const [activeTab, setActiveTab] = useState({
-    'about': false,
-    'resume': false,
-    'gallery': false,
-    'media': false,
-    'contact': false,
-    'instagram': false
-  })
   // useState for mobile navbar
   const [ isBurgerNavbar, setIsBurgerNavbar ] = useState()
   const [open, setOpen] = useState(false);
@@ -77,7 +72,7 @@ function App() {
   // function to change to burger menu
   const willChangeToBurger = () => window.innerWidth <= 680 ? setIsBurgerNavbar(true) : setIsBurgerNavbar(false)
   // functino to change mosaic
-  const willChangeToMosaic = () => window.innerWidth >= 480 ? setIsMosaic(true) : setIsMosaic(false)
+  const willChangeToMosaic = () => window.innerWidth >= 625 ? setIsMosaic(true) : setIsMosaic(false)
 
   useEffect(() => {
     // initialize if mobile and if burger
@@ -91,7 +86,7 @@ function App() {
     window.addEventListener('resize', willChangeToMosaic)
 
     // hit my rails instgram api
-    axios.get(`http://127.0.0.1:3000/api/v1/get_last_nine`)
+    axios.get(`${heroku}/get_last_nine`)
       .then(resp => {
         console.log(resp);
         setInstaGrid(resp.data)
@@ -99,7 +94,7 @@ function App() {
       })
 
     // hit my rails instagram api
-    axios.get(`http://127.0.0.1:3000/api/v1/last_accessed`)
+    axios.get(`${heroku}/last_accessed`)
       .then(resp => {
         const last_accessed = resp.data.last_accessed
         // calculate hours diff
@@ -108,7 +103,7 @@ function App() {
         if (hours_diff >= 1) {
           // create new access instance
           const access = { last_accessed: Date.now() }
-          axios.post(`http://127.0.0.1:3000/api/v1/accesses`, {access})
+          axios.post(`${heroku}/accesses`, {access})
             .then(resp => console.log(resp))
             .catch(error => console.log(error))
           // hit instagram api
@@ -118,7 +113,7 @@ function App() {
               // grab most recent
               const mostRecent = resp.data.data[0]
               // grab latest rails api instagram post
-              axios.get(`http://127.0.0.1:3000/api/v1/get_most_recent`)
+              axios.get(`${heroku}/get_most_recent`)
                 .then(resp => {
                   console.log(resp);
                   const latestPost = resp.data
@@ -154,7 +149,7 @@ function App() {
       );
     } else {
       return (
-        <Navbar isMobile={isMobile} activeTab={activeTab} />
+        <Navbar isMobile={isMobile} />
       );
     }
   };
