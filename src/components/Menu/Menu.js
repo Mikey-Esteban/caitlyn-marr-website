@@ -9,16 +9,16 @@ const Menu = ({ open, setOpen }) => {
       <a href="#about" >
         About
       </a>
-      <a href="#resumeContact" >
-        Resume
-      </a>
       <a href="#mosaic" >
         Gallery
       </a>
       <a href="#media" >
         Media
       </a>
-      <a href="#resumeContact" >
+      <a href="#resume" >
+        Resume
+      </a>
+      <a href="#contact" >
         Contact
       </a>
       <a href="#instagram">

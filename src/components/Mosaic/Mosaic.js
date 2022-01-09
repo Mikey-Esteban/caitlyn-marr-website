@@ -10,7 +10,7 @@ const Wrapper = styled.div`
 `
 
 const ModalContainer = styled.div`
-  z-index: 100;
+  z-index: 90;
   position: fixed;
   top: 0;
   left: 0;

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyledMenu = styled.nav`
-  margin-top: 80px;
+  padding-top: 80px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,7 +11,7 @@ export const StyledMenu = styled.nav`
   min-width: 300px;
   text-align: center;
   /* padding: 0 2rem; */
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   transition: transform 0.3s ease-in-out;

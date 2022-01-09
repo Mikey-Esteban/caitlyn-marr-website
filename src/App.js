@@ -59,6 +59,8 @@ function App() {
   const [ isLoaded, setIsLoaded ] = useState(false)
   const [ instaGrid, setInstaGrid ] = useState()
   const [isMobile, setIsMobile ] = useState()
+  // useState for navbar background
+  const [ addNavbarBG, setAddNavbarBG ] = useState()
   // useState for mobile navbar
   const [ isBurgerNavbar, setIsBurgerNavbar ] = useState()
   const [open, setOpen] = useState(false);
@@ -71,8 +73,16 @@ function App() {
   const willChangeToMobile = () => window.innerWidth <= 480 ? setIsMobile(true) : setIsMobile(false)
   // function to change to burger menu
   const willChangeToBurger = () => window.innerWidth <= 680 ? setIsBurgerNavbar(true) : setIsBurgerNavbar(false)
-  // functino to change mosaic
+  // function to change mosaic
   const willChangeToMosaic = () => window.innerWidth >= 625 ? setIsMosaic(true) : setIsMosaic(false)
+  // function to add background to navbar
+  const willAddNavbarBG = () => {
+    console.log('will add navbar', window.scrollY);
+    let scrollPos = window.scrollY
+    let viewHeight = window.innerHeight
+
+    scrollPos <= viewHeight ? setAddNavbarBG(false) : setAddNavbarBG(true) ;
+  }
 
   useEffect(() => {
     // initialize if mobile and if burger
@@ -81,9 +91,12 @@ function App() {
     // initialize if mosaic
     willChangeToMosaic()
 
+    console.log('WHOAH BUDDY', window.innerHeight);
+
     window.addEventListener('resize', willChangeToMobile)
     window.addEventListener('resize', willChangeToBurger)
     window.addEventListener('resize', willChangeToMosaic)
+    window.addEventListener('scroll', willAddNavbarBG)
 
     // hit my rails instgram api
     axios.get(`${heroku}/get_last_nine`)
@@ -143,13 +156,13 @@ function App() {
           <TitleWrapper>
             CAITLYN MARR
           </TitleWrapper>
-          <Burger open={open} setOpen={setOpen} />
+          <Burger open={open} setOpen={setOpen} addNavbarBG={addNavbarBG} />
           <Menu open={open} setOpen={setOpen} />
         </MobileNavbar>
       );
     } else {
       return (
-        <Navbar isMobile={isMobile} />
+        <Navbar isMobile={isMobile} addNavbarBG={addNavbarBG} />
       );
     }
   };

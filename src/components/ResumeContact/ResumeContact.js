@@ -36,7 +36,7 @@ const CTAWrapper = styled.div`
 `
 
 const ResumeContactWrapper = styled.div`
-  padding: 3rem;
+  padding: 0 3rem 3rem 3rem;
   display: flex;
   justify-content: center;
   align-items: center;

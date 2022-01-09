@@ -109,7 +109,7 @@ const Welcome = () => {
   }, [])
 
   return (
-    <Wrapper>
+    <Wrapper id="welcome">
       <video autoPlay muted id="myVideo">
         <source src="/assets/videos/caitlyn-marr-clip.mp4" type="video/mp4" />
       </video>

@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import Form from '../Form/Form'
 
 const Wrapper = styled.div`
+  padding-top: 3rem;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -12,7 +13,7 @@ const Wrapper = styled.div`
 
 const Contact = () => {
   return (
-    <Wrapper>
+    <Wrapper id="contact">
       <Form></Form>
     </Wrapper>
   )

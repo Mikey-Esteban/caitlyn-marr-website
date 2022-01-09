@@ -5,6 +5,7 @@ import { Document, Page, pdfjs } from 'react-pdf'
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 const Wrapper = styled.div`
+  padding-top: 3rem;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -42,7 +43,7 @@ const Resume = () => {
   const pdfLink = 'assets/CaitlynMarrNewestResume.pdf'
 
   return (
-    <Wrapper>
+    <Wrapper id="resume">
       <DocumentWrapper>
         <Document file={pdfLink} onLoadError={console.error}>
           <Page pageNumber={1} width={500}></Page>

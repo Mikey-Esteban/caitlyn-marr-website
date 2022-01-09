@@ -15,7 +15,7 @@ const Wrapper = styled.div`
 `
 
 const GridWrapper = styled.div`
-  max-width: 500px;
+  max-width: 600px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 15px;
@@ -27,18 +27,20 @@ const GridWrapper = styled.div`
 
   .overlay {
     position: relative;
+    width: 200px;
+    height: 200px;
   }
 
   .caption {
-    background: rgba(0 ,0 ,0 , .5);
+    background: rgba(0 ,0 ,0 , .3);
     color: white;
     cursor: pointer;
     z-index: 1;
     position: absolute;
     top: 0;
     left: 0;
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
 
     display: flex;
     justify-content: center;
@@ -56,8 +58,9 @@ const GridWrapper = styled.div`
 
   img {
     filter: grayscale(100%);
-    width: 150px;
-    height: 150px;
+    object-fit: cover;
+    height: 200px;
+    width: 200px;
   }
 
   img:hover {
@@ -72,7 +75,7 @@ const Instagram = ({grid}) => {
   let list = grid.map(data => {
     return (
       <div className="overlay" key={data.id}>
-        <div className="caption" onClick={() => window.open('https://www.instagram.com/mikeyesteban.design/')}>{data.caption}</div>
+        <div className="caption" onClick={() => window.open(data.permalink)}>{data.caption}</div>
         <img src={data.media_url} alt=""/>
       </div>
     )

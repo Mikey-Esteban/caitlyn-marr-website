@@ -3,13 +3,18 @@ import styled from 'styled-components'
 import { Instagram } from '@styled-icons/boxicons-logos/Instagram'
 
 const Wrapper = styled.div`
+  position: fixed;
+  width: 98%;
+  padding-right: 2%;
   z-index: 2;
-  margin: 0 50px;
 
-  height: 80px;
+  height: 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  transition: background ease-in-out 150ms;
+  background: ${props => props.addNavbarBG ? 'rgba(0, 0, 0, .3)' : 'none'};
 
   @media only screen and (max-width: 600px) {
     margin: 0;
@@ -63,7 +68,7 @@ const LinksWrapper = styled.div`
 `
 
 
-const Navbar = ({isMobile}) => {
+const Navbar = ({isMobile, addNavbarBG}) => {
 
   const handleClick = selector => {
     let element = document.querySelector(`#${selector}`)
@@ -71,16 +76,16 @@ const Navbar = ({isMobile}) => {
   }
 
   return (
-    <Wrapper>
-      <TitleWrapper>
+    <Wrapper addNavbarBG={addNavbarBG}>
+      <TitleWrapper onClick={() => handleClick('welcome')}>
         CAITLYN MARR
       </TitleWrapper>
       <LinksWrapper>
         <Button onClick={() => handleClick('about')}>About</Button>
-        <Button onClick={() => handleClick('resumeContact')}>Resume</Button>
         <Button onClick={() => handleClick('mosaic')} >Gallery</Button>
         <Button onClick={() => handleClick('media')}>Media</Button>
-        <Button onClick={() => handleClick('resumeContact')}>Contact</Button>
+        <Button onClick={() => handleClick('resume')}>Resume</Button>
+        <Button onClick={() => handleClick('contact')}>Contact</Button>
         <Instagram
           size={20}
           onClick={() => handleClick('instagram')}

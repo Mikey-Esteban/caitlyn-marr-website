@@ -2,7 +2,7 @@
 import styled from "styled-components";
 
 export const StyledBurger = styled.button`
-  position: absolute;
+  position: fixed;
   top: 2rem;
   right: 1rem;
   display: flex;
@@ -24,8 +24,9 @@ export const StyledBurger = styled.button`
   div {
     width: 32px; /* 2.05rem */
     height: 2px; /* .15rem */
-    background: ${({ theme, open }) =>
-      open ? 'white' : 'white'};
+    background: ${({ theme, addNavbarBG }) =>
+      addNavbarBG ? 'black' : 'white'};
+    background: ${({ theme, open }) => open && 'white'};
     border-radius: 10px;
     transition: all 0.3s linear;
     position: relative;

@@ -16,8 +16,6 @@ const Wrapper = styled.div`
 
   @media only screen and (max-width: 800px) {
     /* change display value to float image */
-    display: block;
-
     img {
       margin-bottom: 2rem;
     }
@@ -32,6 +30,11 @@ const CTAWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+
+  @media only screen and (min-width: 800px) {
+    /* change display value to float image */
+    width: 40%;
+  }
 
   @media only screen and (min-width: 1000px) {
     /* change display value to float image */
@@ -56,19 +59,24 @@ const InfoWrapper = styled.div`
 `
 
 const MediumMobileWrapper = styled.div`
-  padding: 0 3rem;
-  width: 100%;
+  width: 80%;
   overflow: hidden;
 `
 
 const ImageWrapper = styled.div`
-  width: 50%;
+  display: flex;
+  justify-content: center;
+  width: 40%;
 `
 
-const About = ({isMobile}) => {
+const LargeWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+`
 
-  const [ isMedium, setIsMedium ] = useState()
-  const [ isLarge, setIsLarge ] = useState()
+const About = () => {
+
+  const [ isMobile, setIsMobile ] = useState()
 
   useEffect(() => {
     const reportWindowSize = () => window.innerWidth
@@ -76,16 +84,10 @@ const About = ({isMobile}) => {
     const handleChangeSize = () => {
       let size = reportWindowSize()
       console.log('HIHIHI', size)
-      if (size < 480) {
-        setIsMedium(false)
-        setIsLarge(false)
-      }
-      else if (size >= 480 && size < 625) {
-        setIsMedium(true)
-        setIsLarge(false)
-      } else if (size > 625) {
-        setIsMedium(false)
-        setIsLarge(true)
+      if (size < 625) {
+        setIsMobile(true)
+      } else {
+        setIsMobile(false)
       }
       console.log(size)
     }
@@ -98,7 +100,7 @@ const About = ({isMobile}) => {
 
   return (
     <Wrapper id="about">
-      { (isMobile || isMedium) &&
+      { isMobile &&
         <MediumMobileWrapper>
           <Image
             src={'https://images.squarespace-cdn.com/content/v1/605cb22e7c9f0b38065bb581/1619134613548-SO8CDAJT1C1M4CARD7LC/Caitlyn126.jpg?format=750w'}
@@ -120,8 +122,8 @@ const About = ({isMobile}) => {
           <Button text='Contact' handleClick={() => window.open('https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=mailto&to=caitlynmarr22@gmail.com')}/>
         </MediumMobileWrapper>
       }
-      { isLarge &&
-        <Fragment>
+      { !isMobile &&
+        <LargeWrapper>
           <CTAWrapper>
             <InfoWrapper>
               <TitleWrapper>Welcome!</TitleWrapper>
@@ -144,7 +146,7 @@ const About = ({isMobile}) => {
               aboutImage={true}
             />
           </ImageWrapper>
-        </Fragment>
+        </LargeWrapper>
       }
     </Wrapper>
   )
