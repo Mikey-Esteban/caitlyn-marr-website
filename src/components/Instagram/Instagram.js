@@ -46,7 +46,7 @@ const GridWrapper = styled.div`
     justify-content: center;
     align-items: center;
 
-    font-size: .8rem;
+    font-size: .6rem;
   }
 
   .caption:hover {
