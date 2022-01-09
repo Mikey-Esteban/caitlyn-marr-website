@@ -20,7 +20,7 @@ const GridWrapper = styled.div`
   grid-template-columns: repeat(3, 1fr);
   gap: 15px;
 
-  @media only screen and (max-width: 525px) {
+  @media only screen and (max-width: 600px) {
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
   }
@@ -45,6 +45,8 @@ const GridWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+
+    font-size: .8rem;
   }
 
   .caption:hover {
