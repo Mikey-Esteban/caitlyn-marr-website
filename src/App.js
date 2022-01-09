@@ -45,8 +45,9 @@ const ResumeContactWrapper = styled.div`
   display: flex;
 `
 
-const localHost = 'http://127.0.0.1:3000/api/v1/'
+const localHost = 'http://127.0.0.1:3000/api/v1'
 const heroku = 'https://aqueous-beach-38647.herokuapp.com/api/v1'
+const apiMode = heroku
 
 
 function App() {
@@ -91,23 +92,22 @@ function App() {
     // initialize if mosaic
     willChangeToMosaic()
 
-    console.log('WHOAH BUDDY', window.innerHeight);
-
     window.addEventListener('resize', willChangeToMobile)
     window.addEventListener('resize', willChangeToBurger)
     window.addEventListener('resize', willChangeToMosaic)
     window.addEventListener('scroll', willAddNavbarBG)
 
     // hit my rails instgram api
-    axios.get(`${heroku}/get_last_nine`)
+    axios.get(`${apiMode}/get_last_nine`)
       .then(resp => {
         console.log(resp);
         setInstaGrid(resp.data)
         setIsLoaded(true)
       })
+      .catch(error => console.log(`${apiMode}/get_last_nine ERROR`, error))
 
     // hit my rails instagram api
-    axios.get(`${heroku}/last_accessed`)
+    axios.get(`${apiMode}/last_accessed`)
       .then(resp => {
         const last_accessed = resp.data.last_accessed
         // calculate hours diff
@@ -116,22 +116,28 @@ function App() {
         if (hours_diff >= 1) {
           // create new access instance
           const access = { last_accessed: Date.now() }
-          axios.post(`${heroku}/accesses`, {access})
+          axios.post(`${apiMode}/accesses`, {access})
             .then(resp => console.log(resp))
-            .catch(error => console.log(error))
+            .catch(error => console.log(`${apiMode}/accesses ERROR`, error))
           // hit instagram api
-          axios.get(`https://graph.instagram.com/me/media?fields=id,caption&access_token=${access_token}`)
+          axios.get(`https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url,permalink,thumbnail_url&access_token=${access_token}`)
             .then(resp => {
               console.log(resp);
               // grab most recent
               const mostRecent = resp.data.data[0]
+              console.log('CHECK ME OUT', mostRecent);
               // grab latest rails api instagram post
-              axios.get(`${heroku}/get_most_recent`)
+              axios.get(`${apiMode}/get_most_recent`)
                 .then(resp => {
                   console.log(resp);
                   const latestPost = resp.data
                   // check to see if ids are the same
-                  console.log('ID SAME?', mostRecent.id === latestPost.media_id);
+                  if (mostRecent.id !== latestPost.media_id) {
+                    // create new post
+                    axios.post(`${apiMode}/media`, mostRecent)
+                      .then(resp => console.log(resp))
+                      .catch(error => console.log(`${apiMode}/media ERROR`, error))
+                  }
 
                   /////////////
                   // BIG TO DO LIST
@@ -139,12 +145,12 @@ function App() {
                   // filter whatever isnt already in rails instagram api
                   // add each to rails instagram api
                 })
-                .catch(error => console.log(error))
+                .catch(error => console.log(`${apiMode}/get_most_recent ERROR`, error))
             })
-            .catch(error => console.log(error))
+            .catch(error => console.log(`instagram basic display media query error`, error))
         }
       })
-      .catch(error => console.log(error))
+      .catch(error => console.log(`${apiMode}/last_accessed`, error))
   }, [])
 
 
