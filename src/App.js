@@ -47,7 +47,7 @@ const ResumeContactWrapper = styled.div`
 
 const localHost = 'http://127.0.0.1:3000/api/v1'
 const heroku = 'https://aqueous-beach-38647.herokuapp.com/api/v1'
-const apiMode = heroku
+const apiMode = localHost
 
 
 function App() {
@@ -59,7 +59,7 @@ function App() {
   // useState for instagram gird
   const [ isLoaded, setIsLoaded ] = useState(false)
   const [ instaGrid, setInstaGrid ] = useState()
-  const [isMobile, setIsMobile ] = useState()
+  const [ isMobile, setIsMobile ] = useState()
   // useState for navbar background
   const [ addNavbarBG, setAddNavbarBG ] = useState()
   // useState for mobile navbar
@@ -78,10 +78,8 @@ function App() {
   const willChangeToMosaic = () => window.innerWidth >= 625 ? setIsMosaic(true) : setIsMosaic(false)
   // function to add background to navbar
   const willAddNavbarBG = () => {
-    console.log('will add navbar', window.scrollY);
     let scrollPos = window.scrollY
     let viewHeight = window.innerHeight
-
     scrollPos <= viewHeight ? setAddNavbarBG(false) : setAddNavbarBG(true) ;
   }
 
@@ -120,34 +118,31 @@ function App() {
             .then(resp => console.log(resp))
             .catch(error => console.log(`${apiMode}/accesses ERROR`, error))
           // hit instagram api
-          axios.get(`https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url,permalink,thumbnail_url&access_token=${access_token}`)
+          axios.get(`https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url,permalink,thumbnail_url,timestamp&access_token=${access_token}`)
             .then(resp => {
-              console.log(resp);
+              console.log('INSTAGRAM API RESP',resp);
               // grab most recent
-              const mostRecent = resp.data.data[0]
-              console.log('CHECK ME OUT', mostRecent);
-              // grab latest rails api instagram post
-              axios.get(`${apiMode}/get_most_recent`)
-                .then(resp => {
-                  console.log(resp);
-                  const latestPost = resp.data
-                  // check to see if ids are the same
-                  if (mostRecent.id !== latestPost.media_id) {
-                    // create new post
-                    axios.post(`${apiMode}/media`, mostRecent)
-                      .then(resp => console.log(resp))
-                      .catch(error => console.log(`${apiMode}/media ERROR`, error))
-                  }
-
-                  /////////////
-                  // BIG TO DO LIST
-                  // get all user media
-                  // filter whatever isnt already in rails instagram api
-                  // add each to rails instagram api
-                })
-                .catch(error => console.log(`${apiMode}/get_most_recent ERROR`, error))
+              let allPosts = resp.data.data
+              let lastNine = allPosts.slice(0, 9)
+              // create posts requests
+              lastNine.map(ig => {
+                axios.post(`${apiMode}/media`, { medium: ig })
+                  .then(resp => console.log('post created', resp))
+                  .catch(error => console.log(`${apiMode}/media POST ${ig} ERROR`, error))
+              })
+              setInstaGrid(lastNine)
+              console.log('CHECK ME OUT here is your grid', lastNine);
             })
-            .catch(error => console.log(`instagram basic display media query error`, error))
+            .catch(error => console.log(`instagram basic display media query USER error`, error))
+        } else {
+          // get most recent nine
+          console.log('CALLING GET LAST NINE');
+          axios.get(`${apiMode}/get_last_nine`)
+            .then(resp => {
+              console.log('get last nine resp', resp);
+              setInstaGrid(resp.data)
+            })
+            .catch(error => console.log(`${apiMode}/get_last_nine GET ERROR`, error))
         }
       })
       .catch(error => console.log(`${apiMode}/last_accessed`, error))
@@ -180,7 +175,7 @@ function App() {
         <About isMobile={isMobile} />
         { isMosaic ? <Mosaic /> : <Images />}
         <Media />
-        <ResumeContact />
+        <ResumeContact isMobile={isMobile}/>
         {isLoaded && <Instagram grid={instaGrid} />}
         <Footer />
       </Wrapper>

@@ -5,8 +5,6 @@ import styled from 'styled-components';
 const Wrapper = styled.div`
   padding-top: 4rem;
   margin-bottom: 4rem;
-  ${'' /* background: #171717; */}
-  ${'' /* color: white; */}
 
   display: flex;
   flex-direction: column;
@@ -27,11 +25,12 @@ const GridWrapper = styled.div`
 
   .overlay {
     position: relative;
-    width: 200px;
-    height: 200px;
+    width: 175px;
+    height: 175px;
   }
 
   .caption {
+    overflow: hidden;
     background: rgba(0 ,0 ,0 , .3);
     color: white;
     cursor: pointer;
@@ -39,14 +38,14 @@ const GridWrapper = styled.div`
     position: absolute;
     top: 0;
     left: 0;
-    width: 200px;
-    height: 200px;
+    width: 175px;
+    height: 175px;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
-    font-size: .8rem;
+    font-size: .7rem;
   }
 
   .caption:hover {
@@ -61,8 +60,8 @@ const GridWrapper = styled.div`
   img {
     filter: grayscale(100%);
     object-fit: cover;
-    height: 200px;
-    width: 200px;
+    height: 175px;
+    width: 175px;
   }
 
   img:hover {

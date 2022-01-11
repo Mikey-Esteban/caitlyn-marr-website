@@ -48,7 +48,7 @@ const ResumeContactWrapper = styled.div`
   }
 `
 
-const ResumeContact = () => {
+const ResumeContact = ({isMobile}) => {
   return (
     <Wrapper id="resumeContact">
       <CTAWrapper>
@@ -69,7 +69,7 @@ const ResumeContact = () => {
           />
       </CTAWrapper>
       <ResumeContactWrapper>
-        <Resume />
+        <Resume isMobile={isMobile} />
         <Contact />
       </ResumeContactWrapper>
     </Wrapper>

@@ -14,7 +14,7 @@ const Wrapper = styled.div`
   align-items: center;
 
   transition: background ease-in-out 150ms;
-  background: ${props => props.addNavbarBG ? 'rgba(0, 0, 0, .3)' : 'none'};
+  background: ${props => props.addNavbarBG ? 'rgba(0, 0, 0, .5)' : 'none'};
 
   @media only screen and (max-width: 600px) {
     margin: 0;
