@@ -60,6 +60,7 @@ const ImagesContainer = styled.div`
     cursor: pointer;
     width: 100%;
     object-fit: cover;
+    object-position: center top;
     max-height: 100%;
   }
 
@@ -90,12 +91,20 @@ const Mosaic = () => {
     setActivePicture(image)
   }
 
-  let caitlynPhotos = [
+  let caitlynSquareSpacePhotos = [
     'https://images.squarespace-cdn.com/content/v1/605cb22e7c9f0b38065bb581/42acac37-f8b7-4d95-a735-02aa2146ec2f/Caitlyn144.jpg',
     'https://images.squarespace-cdn.com/content/v1/605cb22e7c9f0b38065bb581/0493fec5-c887-49f3-8cfd-630630a48cee/Caitlyn102.jpg',
     'https://images.squarespace-cdn.com/content/v1/605cb22e7c9f0b38065bb581/1619140582333-GKKFH6KS1TA9LL01TB5Q/Caitlyn542.jpg',
     'https://images.squarespace-cdn.com/content/v1/605cb22e7c9f0b38065bb581/1619140802653-9SIPZXDZPRNIANBGREU6/Caitlyn319.jpg',
     'https://images.squarespace-cdn.com/content/v1/605cb22e7c9f0b38065bb581/1619139811130-HUW5J8O5R1E28I8X6VM2/Caitlyn286.jpg'
+  ]
+
+  let caitlynPhotos = [
+    'assets/images/Caitlyn144.jpg',
+    'assets/images/Caitlyn102.jpg',
+    'assets/images/Caitlyn542.jpg',
+    'assets/images/Caitlyn276.jpg',
+    'assets/images/Caitlyn319.jpg'
   ]
 
   return (

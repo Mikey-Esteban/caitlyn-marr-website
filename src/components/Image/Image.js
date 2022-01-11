@@ -6,12 +6,12 @@ const ImageWrapper = styled.div`
 
   width: 50%;
   img {
-    max-height: 300px;
-    min-height: 200px;
-    max-width: 278px;
-    min-width: 185px;
     border-radius: 50%;
-    width: 100%;
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    object-position: center top;
+    overflow: hidden;
   }
 `
 

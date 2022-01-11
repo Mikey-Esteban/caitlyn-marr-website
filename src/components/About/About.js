@@ -103,9 +103,8 @@ const About = () => {
       { isMobile &&
         <MediumMobileWrapper>
           <Image
-            src={'https://images.squarespace-cdn.com/content/v1/605cb22e7c9f0b38065bb581/1619134613548-SO8CDAJT1C1M4CARD7LC/Caitlyn126.jpg?format=750w'}
-            src={'https://images.squarespace-cdn.com/content/v1/605cb22e7c9f0b38065bb581/1619206921921-PP0I5RCVLAMAU4PJ744F/Caitlyn276_.jpg?format=500w'}
-            alt={'Caitlyn in black, closed smile'}
+            src={'assets/images/CaitlynMarrCommercialHeadshot1.jpg'}
+            alt={'Caitlyn in blue, open smile'}
             aboutImage={true}
           />
           <TitleWrapper>Welcome!</TitleWrapper>
@@ -140,9 +139,8 @@ const About = () => {
           </CTAWrapper>
           <ImageWrapper>
             <Image
-              src={'https://images.squarespace-cdn.com/content/v1/605cb22e7c9f0b38065bb581/1619134613548-SO8CDAJT1C1M4CARD7LC/Caitlyn126.jpg?format=750w'}
-              src={'https://images.squarespace-cdn.com/content/v1/605cb22e7c9f0b38065bb581/1619206921921-PP0I5RCVLAMAU4PJ744F/Caitlyn276_.jpg?format=500w'}
-              alt={'Caitlyn in black, closed smile'}
+              src={'assets/images/CaitlynMarrCommercialHeadshot1.jpg'}
+              alt={'Caitlyn in blue, open smile'}
               aboutImage={true}
             />
           </ImageWrapper>
