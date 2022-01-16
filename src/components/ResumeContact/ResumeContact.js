@@ -53,8 +53,9 @@ const ResumeContact = ({isMobile}) => {
     <Wrapper id="resumeContact">
       <CTAWrapper>
           <a
-            href="https://static1.squarespace.com/static/605cb22e7c9f0b38065bb581/t/6092c67c64cfc81ed79a4f54/1620231804602/Caitlyn+Marr+Newest+Resume.pdf"
+            href="assets/CaitlynMarrNewestResume.pdf"
             target="_blank"
+            download
             >Download Resume
           </a>
           <img

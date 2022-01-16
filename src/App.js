@@ -47,7 +47,7 @@ const ResumeContactWrapper = styled.div`
 
 const localHost = 'http://127.0.0.1:3000/api/v1'
 const heroku = 'https://aqueous-beach-38647.herokuapp.com/api/v1'
-const apiMode = localHost
+const apiMode = heroku
 
 
 function App() {
