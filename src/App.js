@@ -111,6 +111,7 @@ function App() {
         // calculate hours diff
         let hours_diff = Math.abs(Date.now() - Date.parse(last_accessed)) / 3600000
         // if greater than 1, post request to create another access object
+        // delete old media API posts, create new 9
         if (hours_diff >= 1) {
           // create new access instance
           const access = { last_accessed: Date.now() }
@@ -124,14 +125,19 @@ function App() {
               // grab most recent
               let allPosts = resp.data.data
               let lastNine = allPosts.slice(0, 9)
-              // create posts requests
-              lastNine.map(ig => {
-                axios.post(`${apiMode}/media`, { medium: ig })
-                  .then(resp => console.log('post created', resp))
-                  .catch(error => console.log(`${apiMode}/media POST ${ig} ERROR`, error))
-              })
-              setInstaGrid(lastNine)
-              console.log('CHECK ME OUT here is your grid', lastNine);
+              // delete old media posts from api
+              axios.delete(`${apiMode}/delete_all`)
+                .then(resp => {
+                  // create posts requests
+                  lastNine.map(ig => {
+                    axios.post(`${apiMode}/media`, { medium: ig })
+                      .then(resp => console.log('post created', resp))
+                      .catch(error => console.log(`${apiMode}/media POST ${ig} ERROR`, error))
+                  })
+                  setInstaGrid(lastNine)
+                  console.log('CHECK ME OUT here is your grid', lastNine);
+                })
+                .catch(error => console.log(`${apiMode}/delete_all error`, error))
             })
             .catch(error => console.log(`instagram basic display media query USER error`, error))
         } else {

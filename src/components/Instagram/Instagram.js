@@ -46,6 +46,10 @@ const GridWrapper = styled.div`
     align-items: center;
 
     font-size: .7rem;
+
+    p {
+      padding: .5rem;
+    }
   }
 
   .caption:hover {
@@ -76,7 +80,7 @@ const Instagram = ({grid}) => {
   let list = grid.map(data => {
     return (
       <div className="overlay" key={data.id}>
-        <div className="caption" onClick={() => window.open(data.permalink)}>{data.caption}</div>
+        <div className="caption" onClick={() => window.open(data.permalink)}><p>{data.caption}</p></div>
         <img src={data.media_url} alt=""/>
       </div>
     )
