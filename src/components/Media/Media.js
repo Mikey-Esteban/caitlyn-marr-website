@@ -65,8 +65,10 @@ const StyledButton = styled.button`
 
 
 const Media = () => {
+
+
   const caitlynVideos = [
-    {url: '/assets/videos/CaitlynMarrReel.mp4', title: 'Caitlyn Marr Acting Reel'},
+    {url: 'https://player.vimeo.com/video/580009431?h=6a27091000', title: 'Caitlyn Marr Acting Reel'},
     {url: 'https://youtu.be/uAJihTLvhsg', title: 'Character Nora Durst | The Leftovers'},
     {url: 'https://youtu.be/iH-Bma4M-JI', title: 'Romantic Comedy Scene'},
     {url: 'https://youtu.be/Liy_2ObZO98', title: 'Zuzu in Dance Nation'},
@@ -78,22 +80,15 @@ const Media = () => {
 
   return (
     <Wrapper id="media">
-      { activeVideo.title == caitlynVideos[0].title &&
-        <Fragment>
-          <h1>{activeVideo.title}</h1>
-          <video className="video" width="640" controls>
-            <source src={caitlynVideos[0].url} type="video/mp4">
-            </source>
-          </video>
-        </Fragment>
-      }
-
-      { activeVideo.title != caitlynVideos[0].title &&
-        <Fragment>
-          <h1>{activeVideo.title}</h1>
-          <ReactPlayer className="video" url={activeVideo.url}/>
-        </Fragment>
-      }
+      <h1>{activeVideo.title}</h1>
+      <ReactPlayer
+        className="video"
+        url={activeVideo.url}
+        config={{
+          vimeo: {
+            playerOptions: {controls: true}
+          }
+        }} />
 
       <p>Select another video to watch :)</p>
       <ButtonsWrapper>
