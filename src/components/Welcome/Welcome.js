@@ -108,12 +108,24 @@ const Welcome = () => {
     video.addEventListener('ended', videoHasEnded)
   }, [])
 
+  const createVideo = () => {
+    return {__html: `
+      <video
+        muted
+        autoPlay
+        id="myVideo"
+        >
+        <source src="/assets/videos/caitlyn-marr-clip.mp4" type="video/mp4" />
+        </video>
+    `}
+  }
+
   return (
     <Wrapper id="welcome">
-      <video autoPlay muted id="myVideo">
-        <source src="/assets/videos/caitlyn-marr-clip.mp4" type="video/mp4" />
-      </video>
-
+      {/* handle weird safari mobile case iphone */}
+      <div
+        dangerouslySetInnerHTML={ createVideo() }
+      />
       <div id="shadow">
         <div className="content opaque" id="landingContent">
           <h1 id="title" onClick={() => handleClick('about')}>CAITLYN MARR</h1>
