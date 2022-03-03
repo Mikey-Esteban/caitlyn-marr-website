@@ -55,6 +55,7 @@ function App() {
   const node = useRef();
   // access token for instagram api
   const access_token = process.env['REACT_APP_INSTAGRAM_ACCESS_TOKEN']
+  console.log('UHHHH ACT', access_token);
 
   // useState for instagram gird
   const [ isLoaded, setIsLoaded ] = useState(false)

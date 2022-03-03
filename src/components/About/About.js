@@ -83,7 +83,7 @@ const About = () => {
 
     const handleChangeSize = () => {
       let size = reportWindowSize()
-      console.log('HIHIHI', size)
+
       if (size < 625) {
         setIsMobile(true)
       } else {
