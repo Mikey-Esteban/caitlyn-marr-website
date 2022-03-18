@@ -71,7 +71,7 @@ const DocumentWrapper = styled.div`
 `
 
 const Resume = ({isMobile}) => {
-  const pdfLink = 'assets/CaitlynMarrNewestResume.pdf'
+  const pdfLink = 'assets/Caitlyn_Marr_Resume_2022.pdf'
 
   const [ showModal, setShowModal ] = useState(false)
 
