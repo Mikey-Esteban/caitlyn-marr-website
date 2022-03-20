@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
+import {ArrowDownShort} from '@styled-icons/bootstrap/ArrowDownShort'
 
 
 const Wrapper = styled.div`
@@ -7,13 +8,23 @@ const Wrapper = styled.div`
   border: none;
 
   h1 {
-    font-size: 4rem;
+    margin: 2rem 0;
+    font-size: 6rem;
     font-weight: 500;
+  }
+
+  h3 {
+    margin: 0rem 0rem 1rem 0;
+    font-size: 2rem;
   }
 
   @media only screen and (max-width: 500px) {
     h1 {
-      font-size: 3rem;
+      font-size: 5rem;
+    }
+
+    h3 {
+      font-size: 2rem;
     }
   }
   /* Style the video: 100% width and height to cover the entire window */
@@ -21,7 +32,8 @@ const Wrapper = styled.div`
     position: absolute;
     z-index: -100;
     top: 0;
-    width: 100%;
+    width: 100vw;
+    max-width: 100%;
     height: 100vh;
     background: black;
     display: block;
@@ -85,6 +97,10 @@ const Wrapper = styled.div`
   }
 `
 
+const IconWrapper = styled.div`
+  cursor: pointer;
+`
+
 const Welcome = () => {
 
   const videoHasEnded = () => {
@@ -129,8 +145,11 @@ const Welcome = () => {
       />
       <div id="shadow">
         <div className="content opaque" id="landingContent">
-          <h1 id="title" onClick={() => handleClick('about')}>CAITLYN MARR</h1>
-          <button id="myBtn" onClick={() => handleClick('media')}>Actor</button>
+          <h1 id="title">CAITLYN MARR</h1>
+          <h3>ACTOR</h3>
+          <IconWrapper>
+            <ArrowDownShort size={50} onClick={() => handleClick('about')} />
+          </IconWrapper>
         </div>
       </div>
     </Wrapper>

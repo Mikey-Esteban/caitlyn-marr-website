@@ -48,7 +48,16 @@ const Gallery = ({isMobile}) => {
     'assets/images/Caitlyn102.jpg',
     'assets/images/Caitlyn542.jpg',
     'assets/images/Caitlyn276.jpg',
-    'assets/images/Caitlyn319.jpg'
+    'assets/images/Caitlyn319.jpg',
+    'assets/images/Caitlyn_Marr_Headshot_2022.jpg',
+    'assets/images/caitlyn-meagher-0001.jpg',
+    'assets/images/caitlyn-meagher-0040.jpg',
+    'assets/images/caitlyn-meagher-0092.jpg',
+    'assets/images/caitlyn-meagher-9364.jpg',
+    'assets/images/caitlyn-meagher-9455.jpg',
+    'assets/images/caitlyn-meagher-9638.jpg',
+    'assets/images/caitlyn-meagher-9698.jpg',
+    'assets/images/caitlyn-meagher-9801.jpg'
   ]
 
   return (
@@ -69,6 +78,12 @@ const Gallery = ({isMobile}) => {
         </div>
         <div className="photoFive">
           <img src={caitlynPhotos[4]} alt=""/>
+        </div>
+        <div className="photoSix">
+          <img src={caitlynPhotos[5]} alt=""/>
+        </div>
+        <div className="photoSeven">
+          <img src={caitlynPhotos[6]} alt=""/>
         </div>
       </GalleryWrapper>
     </Wrapper>

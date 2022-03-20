@@ -77,6 +77,8 @@ const LargeWrapper = styled.div`
 const About = () => {
 
   const [ isMobile, setIsMobile ] = useState()
+  const pictureUrl = 'assets/images/Caitlyn_Marr_Headshot_2022.jpg'
+  const pictureAlt = 'Caitlyn in black, smoldering'
 
   useEffect(() => {
     const reportWindowSize = () => window.innerWidth
@@ -103,8 +105,8 @@ const About = () => {
       { isMobile &&
         <MediumMobileWrapper>
           <Image
-            src={'assets/images/CaitlynMarrCommercialHeadshot1.jpg'}
-            alt={'Caitlyn in blue, open smile'}
+            src={pictureUrl}
+            alt={pictureAlt}
             aboutImage={true}
           />
           <TitleWrapper>Welcome!</TitleWrapper>
@@ -139,8 +141,8 @@ const About = () => {
           </CTAWrapper>
           <ImageWrapper>
             <Image
-              src={'assets/images/CaitlynMarrCommercialHeadshot1.jpg'}
-              alt={'Caitlyn in blue, open smile'}
+              src={pictureUrl}
+              alt={pictureAlt}
               aboutImage={true}
             />
           </ImageWrapper>

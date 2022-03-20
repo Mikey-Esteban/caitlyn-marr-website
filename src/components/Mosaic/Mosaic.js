@@ -40,45 +40,39 @@ const ModalContainer = styled.div`
 `
 
 const ImagesContainer = styled.div`
-  max-height: 500px;
   max-width: 800px;
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: 94px 94px 94px 93px;
-  grid-template-areas:
-    "a a a b b b c c"
-    "a a a b b b c c"
-    "d d d b b b e e"
-    "d d d b b b e e"
-  ;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
 
-  @media only screen and (max-width: 825px) {
-    grid-template-rows: 70px 70px 70px 69px;
+  .photo {
+    width: 32%;
+    max-width: 32%;
   }
 
   .photo > img {
-    cursor: pointer;
     width: 100%;
+    height: 300px;
+    cursor: pointer;
     object-fit: cover;
     object-position: center top;
-    max-height: 100%;
   }
 
-  .first {
-    grid-area: a;
+  @media only screen and (max-width: 825px) {
+    max-width: 600px;
+
+    .photo > img {
+      height: 200px;
+    }
   }
-  .second {
-    grid-area: d;
-  }
-  .third {
-    grid-area: c;
-  }
-  .fourth {
-    grid-area: e;
-  }
-  .fifth {
-    grid-area: b;
-  }
+
+  /* .photo > img {
+    border: 1px solid red;
+    cursor: pointer;
+    width: 30%;
+    object-fit: cover;
+    object-position: center top;
+  } */
 `
 
 const Mosaic = () => {
@@ -91,20 +85,22 @@ const Mosaic = () => {
     setActivePicture(image)
   }
 
-  let caitlynSquareSpacePhotos = [
-    'https://images.squarespace-cdn.com/content/v1/605cb22e7c9f0b38065bb581/42acac37-f8b7-4d95-a735-02aa2146ec2f/Caitlyn144.jpg',
-    'https://images.squarespace-cdn.com/content/v1/605cb22e7c9f0b38065bb581/0493fec5-c887-49f3-8cfd-630630a48cee/Caitlyn102.jpg',
-    'https://images.squarespace-cdn.com/content/v1/605cb22e7c9f0b38065bb581/1619140582333-GKKFH6KS1TA9LL01TB5Q/Caitlyn542.jpg',
-    'https://images.squarespace-cdn.com/content/v1/605cb22e7c9f0b38065bb581/1619140802653-9SIPZXDZPRNIANBGREU6/Caitlyn319.jpg',
-    'https://images.squarespace-cdn.com/content/v1/605cb22e7c9f0b38065bb581/1619139811130-HUW5J8O5R1E28I8X6VM2/Caitlyn286.jpg'
-  ]
-
   let caitlynPhotos = [
+    'assets/images/caitlyn-meagher-0001.jpg',
+    'assets/images/caitlyn-meagher-9638.jpg',
+    'assets/images/caitlyn-meagher-9801.jpg',
+    'assets/images/caitlyn-meagher-9698.jpg',
+    'assets/images/Caitlyn_Marr_Headshot_2022.jpg',
+    'assets/images/caitlyn-meagher-0040.jpg',
+    'assets/images/caitlyn-meagher-0092.jpg',
+    'assets/images/caitlyn-meagher-9364.jpg',
+    'assets/images/caitlyn-meagher-9455.jpg',
+    'assets/images/CaitlynMarrCommercialHeadshot1.jpg',
+    'assets/images/Caitlyn542.jpg',
+    'assets/images/Caitlyn319.jpg',
+    'assets/images/Caitlyn276.jpg',
     'assets/images/Caitlyn144.jpg',
     'assets/images/Caitlyn102.jpg',
-    'assets/images/Caitlyn542.jpg',
-    'assets/images/Caitlyn276.jpg',
-    'assets/images/Caitlyn319.jpg'
   ]
 
   return (
@@ -115,13 +111,21 @@ const Mosaic = () => {
         </ModalContainer>
       }
       <ImagesContainer>
-        <div className="photo first" onClick={() => handlePictureClick(caitlynPhotos[0])}>
-          <img src={caitlynPhotos[0]} alt=""/>
-        </div>
+        <div className="photo first" onClick={() => handlePictureClick(caitlynPhotos[0])}><img src={caitlynPhotos[0]} alt=""/></div>
         <div className="photo second" onClick={() => handlePictureClick(caitlynPhotos[1])} ><img src={caitlynPhotos[1]} alt=""/></div>
         <div className="photo third" onClick={() => handlePictureClick(caitlynPhotos[2])} ><img src={caitlynPhotos[2]} alt=""/></div>
         <div className="photo fourth" onClick={() => handlePictureClick(caitlynPhotos[3])} ><img src={caitlynPhotos[3]} alt=""/></div>
         <div className="photo fifth" onClick={() => handlePictureClick(caitlynPhotos[4])} ><img src={caitlynPhotos[4]} alt=""/></div>
+        <div className="photo sixth" onClick={() => handlePictureClick(caitlynPhotos[5])} ><img src={caitlynPhotos[5]} alt=""/></div>
+        <div className="photo seven" onClick={() => handlePictureClick(caitlynPhotos[6])} ><img src={caitlynPhotos[6]} alt=""/></div>
+        <div className="photo eight" onClick={() => handlePictureClick(caitlynPhotos[7])} ><img src={caitlynPhotos[7]} alt=""/></div>
+        <div className="photo nine" onClick={() => handlePictureClick(caitlynPhotos[8])} ><img src={caitlynPhotos[8]} alt=""/></div>
+        <div className="photo ten" onClick={() => handlePictureClick(caitlynPhotos[9])} ><img src={caitlynPhotos[9]} alt=""/></div>
+        <div className="photo eleven" onClick={() => handlePictureClick(caitlynPhotos[10])} ><img src={caitlynPhotos[10]} alt=""/></div>
+        <div className="photo twelve" onClick={() => handlePictureClick(caitlynPhotos[11])} ><img src={caitlynPhotos[11]} alt=""/></div>
+        <div className="photo thirteen" onClick={() => handlePictureClick(caitlynPhotos[12])} ><img src={caitlynPhotos[12]} alt=""/></div>
+        <div className="photo fourteen" onClick={() => handlePictureClick(caitlynPhotos[13])} ><img src={caitlynPhotos[13]} alt=""/></div>
+        <div className="photo fifteen" onClick={() => handlePictureClick(caitlynPhotos[14])} ><img src={caitlynPhotos[14]} alt=""/></div>
       </ImagesContainer>
     </Wrapper>
   )

@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
+import { Plus } from '@styled-icons/bootstrap/Plus'
+import { Minus } from '@styled-icons/boxicons-regular/Minus'
 
 const Wrapper = styled.div`
   padding-top: 4rem;
@@ -7,7 +9,7 @@ const Wrapper = styled.div`
 
   display: flex;
   justify-content: center;
-  align-items: end;
+  align-items: center;
   flex-direction: column;
   gap: 2rem;
 
@@ -18,33 +20,65 @@ const Wrapper = styled.div`
   }
 `
 
+const IconWrapper = styled.div`
+  cursor: pointer;
+`
+
 const Images = () => {
 
   let caitlynPhotos = [
-    'https://images.squarespace-cdn.com/content/v1/605cb22e7c9f0b38065bb581/42acac37-f8b7-4d95-a735-02aa2146ec2f/Caitlyn144.jpg',
-    'https://images.squarespace-cdn.com/content/v1/605cb22e7c9f0b38065bb581/0493fec5-c887-49f3-8cfd-630630a48cee/Caitlyn102.jpg',
-    'https://images.squarespace-cdn.com/content/v1/605cb22e7c9f0b38065bb581/1619140582333-GKKFH6KS1TA9LL01TB5Q/Caitlyn542.jpg',
-    'https://images.squarespace-cdn.com/content/v1/605cb22e7c9f0b38065bb581/1619140802653-9SIPZXDZPRNIANBGREU6/Caitlyn319.jpg',
-    'https://images.squarespace-cdn.com/content/v1/605cb22e7c9f0b38065bb581/1619139811130-HUW5J8O5R1E28I8X6VM2/Caitlyn286.jpg'
+    'assets/images/caitlyn-meagher-0001.jpg',
+    'assets/images/caitlyn-meagher-9638.jpg',
+    'assets/images/caitlyn-meagher-9801.jpg',
+    'assets/images/caitlyn-meagher-9698.jpg',
+    'assets/images/Caitlyn_Marr_Headshot_2022.jpg',
+    'assets/images/caitlyn-meagher-0040.jpg',
+    'assets/images/caitlyn-meagher-0092.jpg',
+    'assets/images/caitlyn-meagher-9364.jpg',
+    'assets/images/caitlyn-meagher-9455.jpg',
+    'assets/images/CaitlynMarrCommercialHeadshot1.jpg',
+    'assets/images/Caitlyn542.jpg',
+    'assets/images/Caitlyn319.jpg',
+    'assets/images/Caitlyn276.jpg',
+    'assets/images/Caitlyn144.jpg',
+    'assets/images/Caitlyn102.jpg',
   ]
+
+  const [ showAll, setShowAll ] = useState(false)
 
   return (
     <Wrapper id="mosaic">
-      <div className="photoOne">
-        <img src={caitlynPhotos[0]} alt=""/>
-      </div>
-      <div className="photoTwo">
-        <img src={caitlynPhotos[1]} alt=""/>
-      </div>
-      <div className="photoThree">
-        <img src={caitlynPhotos[2]} alt=""/>
-      </div>
-      <div className="photoFour">
-        <img src={caitlynPhotos[3]} alt=""/>
-      </div>
-      <div className="photoFive">
-        <img src={caitlynPhotos[4]} alt=""/>
-      </div>
+      { !showAll ?
+          <>
+          <div className="photoOne"><img src={caitlynPhotos[0]} alt=""/></div>
+          <div className="photoTwo"><img src={caitlynPhotos[1]} alt=""/></div>
+          <div className="photoThree"><img src={caitlynPhotos[2]} alt=""/></div>
+          <div className="photoFour"><img src={caitlynPhotos[3]} alt=""/></div>
+          <IconWrapper>
+            <Plus size={50} onClick={() => setShowAll(true)} />
+          </IconWrapper>
+          </>
+        :
+          <>
+          <div className="photoOne"><img src={caitlynPhotos[0]} alt=""/></div>
+          <div className="photoTwo"><img src={caitlynPhotos[1]} alt=""/></div>
+          <div className="photoThree"><img src={caitlynPhotos[2]} alt=""/></div>
+          <div className="photoFour"><img src={caitlynPhotos[3]} alt=""/></div>
+          <div className="photoFive"><img src={caitlynPhotos[4]} alt=""/></div>
+          <div className="photoSix"><img src={caitlynPhotos[5]} alt=""/></div>
+          <div className="photoSeven"><img src={caitlynPhotos[6]} alt=""/></div>
+          <div className="photoEight"><img src={caitlynPhotos[7]} alt=""/></div>
+          <div className="photoNine"><img src={caitlynPhotos[8]} alt=""/></div>
+          <div className="photoTen"><img src={caitlynPhotos[9]} alt=""/></div>
+          <div className="photoEleven"><img src={caitlynPhotos[10]} alt=""/></div>
+          <div className="photoTwelve"><img src={caitlynPhotos[11]} alt=""/></div>
+          <div className="photoThirteen"><img src={caitlynPhotos[12]} alt=""/></div>
+          <div className="photoFourteen"><img src={caitlynPhotos[13]} alt=""/></div>
+          <IconWrapper>
+            <Minus size={50} onClick={() => setShowAll(false)} />
+          </IconWrapper>
+          </>
+      }
     </Wrapper>
   )
 }

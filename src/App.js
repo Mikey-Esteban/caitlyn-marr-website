@@ -74,7 +74,10 @@ function App() {
   // function to change to mobile
   const willChangeToMobile = () => window.innerWidth <= 480 ? setIsMobile(true) : setIsMobile(false)
   // function to change to burger menu
-  const willChangeToBurger = () => window.innerWidth <= 680 ? setIsBurgerNavbar(true) : setIsBurgerNavbar(false)
+  /////////////////////////
+  // SETTING ALWAYS TO true
+  ///////////////////////
+  const willChangeToBurger = () => window.innerWidth <= 680 ? setIsBurgerNavbar(true) : setIsBurgerNavbar(true)
   // function to change mosaic
   const willChangeToMosaic = () => window.innerWidth >= 625 ? setIsMosaic(true) : setIsMosaic(false)
   // function to add background to navbar
