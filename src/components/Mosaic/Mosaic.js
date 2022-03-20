@@ -120,12 +120,6 @@ const Mosaic = () => {
         <div className="photo seven" onClick={() => handlePictureClick(caitlynPhotos[6])} ><img src={caitlynPhotos[6]} alt=""/></div>
         <div className="photo eight" onClick={() => handlePictureClick(caitlynPhotos[7])} ><img src={caitlynPhotos[7]} alt=""/></div>
         <div className="photo nine" onClick={() => handlePictureClick(caitlynPhotos[8])} ><img src={caitlynPhotos[8]} alt=""/></div>
-        <div className="photo ten" onClick={() => handlePictureClick(caitlynPhotos[9])} ><img src={caitlynPhotos[9]} alt=""/></div>
-        <div className="photo eleven" onClick={() => handlePictureClick(caitlynPhotos[10])} ><img src={caitlynPhotos[10]} alt=""/></div>
-        <div className="photo twelve" onClick={() => handlePictureClick(caitlynPhotos[11])} ><img src={caitlynPhotos[11]} alt=""/></div>
-        <div className="photo thirteen" onClick={() => handlePictureClick(caitlynPhotos[12])} ><img src={caitlynPhotos[12]} alt=""/></div>
-        <div className="photo fourteen" onClick={() => handlePictureClick(caitlynPhotos[13])} ><img src={caitlynPhotos[13]} alt=""/></div>
-        <div className="photo fifteen" onClick={() => handlePictureClick(caitlynPhotos[14])} ><img src={caitlynPhotos[14]} alt=""/></div>
       </ImagesContainer>
     </Wrapper>
   )

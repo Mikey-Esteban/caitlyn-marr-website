@@ -53,7 +53,6 @@ const Images = () => {
           <div className="photoOne"><img src={caitlynPhotos[0]} alt=""/></div>
           <div className="photoTwo"><img src={caitlynPhotos[1]} alt=""/></div>
           <div className="photoThree"><img src={caitlynPhotos[2]} alt=""/></div>
-          <div className="photoFour"><img src={caitlynPhotos[3]} alt=""/></div>
           <IconWrapper>
             <Plus size={50} onClick={() => setShowAll(true)} />
           </IconWrapper>
@@ -68,12 +67,6 @@ const Images = () => {
           <div className="photoSix"><img src={caitlynPhotos[5]} alt=""/></div>
           <div className="photoSeven"><img src={caitlynPhotos[6]} alt=""/></div>
           <div className="photoEight"><img src={caitlynPhotos[7]} alt=""/></div>
-          <div className="photoNine"><img src={caitlynPhotos[8]} alt=""/></div>
-          <div className="photoTen"><img src={caitlynPhotos[9]} alt=""/></div>
-          <div className="photoEleven"><img src={caitlynPhotos[10]} alt=""/></div>
-          <div className="photoTwelve"><img src={caitlynPhotos[11]} alt=""/></div>
-          <div className="photoThirteen"><img src={caitlynPhotos[12]} alt=""/></div>
-          <div className="photoFourteen"><img src={caitlynPhotos[13]} alt=""/></div>
           <IconWrapper>
             <Minus size={50} onClick={() => setShowAll(false)} />
           </IconWrapper>
