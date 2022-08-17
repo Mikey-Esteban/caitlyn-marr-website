@@ -49,12 +49,16 @@ const ResumeContactWrapper = styled.div`
 `
 
 const ResumeContact = ({isMobile}) => {
+
+  const pdfLink = `assets/Caitlyn_Marr_Resume_2022_MASTER.pdf`;
+
   return (
     <Wrapper id="resumeContact">
       <CTAWrapper>
           <a
-            href="assets/CaitlynMarrNewestResume.pdf"
+            href={pdfLink}
             target="_blank"
+            rel="noreferrer"
             download
             >Download Resume
           </a>
@@ -70,7 +74,7 @@ const ResumeContact = ({isMobile}) => {
           />
       </CTAWrapper>
       <ResumeContactWrapper>
-        <Resume isMobile={isMobile} />
+        <Resume isMobile={isMobile} pdfLink={pdfLink} />
         <Contact />
       </ResumeContactWrapper>
     </Wrapper>
