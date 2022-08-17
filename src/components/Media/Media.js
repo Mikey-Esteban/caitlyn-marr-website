@@ -68,9 +68,10 @@ const Media = () => {
 
 
   const caitlynVideos = [
-    {url: 'https://player.vimeo.com/video/580009431?h=6a27091000', title: 'Caitlyn Marr Acting Reel'},
+    // {url: 'https://player.vimeo.com/video/580009431?h=6a27091000', title: 'Caitlyn Marr Acting Reel'},
+    {url: 'https://www.youtube.com/watch?v=prdZdzKAJ6Y', title: 'Caitlyn Marr Acting Reel'},
     {url: 'https://youtu.be/uAJihTLvhsg', title: 'Character Nora Durst | The Leftovers'},
-    {url: 'https://youtu.be/iH-Bma4M-JI', title: 'Romantic Comedy Scene'},
+    // {url: 'https://youtu.be/iH-Bma4M-JI', title: 'Romantic Comedy Scene'},
     {url: 'https://youtu.be/Liy_2ObZO98', title: 'Zuzu in Dance Nation'},
     {url: 'https://youtu.be/ixvmI_BTmos', title: 'Silly Commercial Clip'}
   ]
@@ -96,7 +97,7 @@ const Media = () => {
         <StyledButton onClick={() => setActiveVideo(caitlynVideos[1])}>{caitlynVideos[1].title}</StyledButton>
         <StyledButton onClick={() => setActiveVideo(caitlynVideos[2])}>{caitlynVideos[2].title}</StyledButton>
         <StyledButton onClick={() => setActiveVideo(caitlynVideos[3])}>{caitlynVideos[3].title}</StyledButton>
-        <StyledButton onClick={() => setActiveVideo(caitlynVideos[4])}>{caitlynVideos[4].title}</StyledButton>
+        {/* <StyledButton onClick={() => setActiveVideo(caitlynVideos[4])}>{caitlynVideos[4].title}</StyledButton> */}
       </ButtonsWrapper>
 
     </Wrapper>
