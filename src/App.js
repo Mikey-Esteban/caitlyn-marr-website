@@ -9,7 +9,7 @@ import {
   Burger,
   Menu,
   Welcome,
-  Landing,
+  // Landing,
   About,
   Mosaic,
   Images,
@@ -41,9 +41,9 @@ const TitleWrapper = styled.h1`
   letter-spacing: .1rem;
 `
 
-const ResumeContactWrapper = styled.div`
-  display: flex;
-`
+// const ResumeContactWrapper = styled.div`
+//   display: flex;
+// `
 
 const localHost = 'http://127.0.0.1:3000/api/v1'
 const heroku = 'https://aqueous-beach-38647.herokuapp.com/api/v1'
@@ -55,7 +55,6 @@ function App() {
   const node = useRef();
   // access token for instagram api
   const access_token = process.env['REACT_APP_INSTAGRAM_ACCESS_TOKEN']
-  console.log('UHHHH ACT', access_token);
 
   // useState for instagram gird
   const [ isLoaded, setIsLoaded ] = useState(false)
