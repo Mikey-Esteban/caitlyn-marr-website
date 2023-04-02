@@ -1,8 +1,7 @@
-import React, { useState, Fragment } from 'react'
-import ReactPlayer from 'react-player'
+import React, { useState, Fragment } from "react";
+import ReactPlayer from "react-player";
 
-import styled from 'styled-components'
-
+import styled from "styled-components";
 
 const Wrapper = styled.div`
   margin-top: 4rem;
@@ -38,14 +37,14 @@ const Wrapper = styled.div`
       height: 180px !important;
     }
   }
-`
+`;
 
 const ButtonsWrapper = styled.div`
   width: 70%;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-`
+`;
 
 const StyledButton = styled.button`
   padding: 10px 20px;
@@ -54,30 +53,30 @@ const StyledButton = styled.button`
   border-radius: 2px;
   color: white;
   cursor: pointer;
-  font-family: 'Montserrat', sans-serif;
-  font-size: .8rem;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.8rem;
   transition: all ease-in-out 150ms;
 
   &:hover {
     background: #a89f99;
   }
-`
-
+`;
 
 const Media = () => {
-
-
   const caitlynVideos = [
     // {url: 'https://player.vimeo.com/video/580009431?h=6a27091000', title: 'Caitlyn Marr Acting Reel'},
-    {url: 'https://www.youtube.com/watch?v=prdZdzKAJ6Y', title: 'Caitlyn Marr Acting Reel'},
-    {url: 'https://youtu.be/uAJihTLvhsg', title: 'Character Nora Durst | The Leftovers'},
+    // {url: 'https://www.youtube.com/watch?v=prdZdzKAJ6Y', title: 'Caitlyn Marr Acting Reel'},
+    { url: "https://youtu.be/iP9mDK_P2U0", title: "Caitlyn Marr Acting Reel" },
+    {
+      url: "https://youtu.be/uAJihTLvhsg",
+      title: "Character Nora Durst | The Leftovers",
+    },
     // {url: 'https://youtu.be/iH-Bma4M-JI', title: 'Romantic Comedy Scene'},
-    {url: 'https://youtu.be/Liy_2ObZO98', title: 'Zuzu in Dance Nation'},
-    {url: 'https://youtu.be/ixvmI_BTmos', title: 'Silly Commercial Clip'}
-  ]
+    { url: "https://youtu.be/Liy_2ObZO98", title: "Zuzu in Dance Nation" },
+    { url: "https://youtu.be/ixvmI_BTmos", title: "Silly Commercial Clip" },
+  ];
 
-  const [ activeVideo, setActiveVideo ] = useState(caitlynVideos[0])
-
+  const [activeVideo, setActiveVideo] = useState(caitlynVideos[0]);
 
   return (
     <Wrapper id="media">
@@ -87,21 +86,29 @@ const Media = () => {
         url={activeVideo.url}
         config={{
           vimeo: {
-            playerOptions: {controls: true}
-          }
-        }} />
+            playerOptions: { controls: true },
+          },
+        }}
+      />
 
       <p>Select another video to watch :)</p>
       <ButtonsWrapper>
-        <StyledButton onClick={() => setActiveVideo(caitlynVideos[0])}>{caitlynVideos[0].title}</StyledButton>
-        <StyledButton onClick={() => setActiveVideo(caitlynVideos[1])}>{caitlynVideos[1].title}</StyledButton>
-        <StyledButton onClick={() => setActiveVideo(caitlynVideos[2])}>{caitlynVideos[2].title}</StyledButton>
-        <StyledButton onClick={() => setActiveVideo(caitlynVideos[3])}>{caitlynVideos[3].title}</StyledButton>
+        <StyledButton onClick={() => setActiveVideo(caitlynVideos[0])}>
+          {caitlynVideos[0].title}
+        </StyledButton>
+        <StyledButton onClick={() => setActiveVideo(caitlynVideos[1])}>
+          {caitlynVideos[1].title}
+        </StyledButton>
+        <StyledButton onClick={() => setActiveVideo(caitlynVideos[2])}>
+          {caitlynVideos[2].title}
+        </StyledButton>
+        <StyledButton onClick={() => setActiveVideo(caitlynVideos[3])}>
+          {caitlynVideos[3].title}
+        </StyledButton>
         {/* <StyledButton onClick={() => setActiveVideo(caitlynVideos[4])}>{caitlynVideos[4].title}</StyledButton> */}
       </ButtonsWrapper>
-
     </Wrapper>
-  )
-}
+  );
+};
 
-export default Media
+export default Media;
