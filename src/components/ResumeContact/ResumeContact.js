@@ -50,7 +50,7 @@ const ResumeContactWrapper = styled.div`
 
 const ResumeContact = ({isMobile}) => {
 
-  const pdfLink = `assets/Caitlyn_Marr_Resume_2022_MASTER.pdf`;
+  const pdfLink = `assets/Caitlyn_Marr_Resume_May_2023.pdf`;
 
   return (
     <Wrapper id="resumeContact">
